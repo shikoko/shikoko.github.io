@@ -369,13 +369,6 @@ ul, ol { padding: 0; }
   color: var(--muted);
 }
 .job-links .formerly::before { content: "· "; }
-.job-links .store {
-  margin-left: .1rem;
-  padding-left: .45rem;
-  font-weight: 400;
-  color: var(--muted);
-  border-left: 1px solid var(--line);
-}
 .link-retired {
   display: inline-flex;
   align-items: center;
@@ -626,7 +619,6 @@ ul, ol { padding: 0; }
   .bullets li { line-height: 1.45; }
   .bullets li + li { margin-top: .12rem; }
   .job-links { margin-top: .4rem; }
-  .job-links .store-play { display: none; }  /* the play icon already says Google Play */
 
   .sidebar { display: block; }
   .sidebar > section + section { margin-top: 1.5rem; }
