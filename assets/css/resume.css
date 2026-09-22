@@ -369,6 +369,13 @@ ul, ol { padding: 0; }
   color: var(--muted);
 }
 .job-links .formerly::before { content: "· "; }
+.job-links .store {
+  margin-left: .1rem;
+  padding-left: .45rem;
+  font-weight: 400;
+  color: var(--muted);
+  border-left: 1px solid var(--line);
+}
 .link-retired {
   display: inline-flex;
   align-items: center;
@@ -557,7 +564,7 @@ ul, ol { padding: 0; }
 
 @page {
   size: A4;
-  margin: 11mm 12mm 12mm;
+  margin: 10mm 11mm 11mm;
 }
 
 @media print {
@@ -574,7 +581,7 @@ ul, ol { padding: 0; }
     color-scheme: light;
   }
 
-  html { font-size: 12.5px; }
+  html { font-size: 12px; }
   body {
     background: #fff;
     -webkit-print-color-adjust: exact;
@@ -601,23 +608,30 @@ ul, ol { padding: 0; }
   .summary { font-size: 1rem; max-width: none; }
 
   .layout {
-    grid-template-columns: minmax(0, 1fr) 30%;
-    gap: 2rem;
-    padding-top: 1.25rem;
+    grid-template-columns: minmax(0, 1fr) 28%;
+    gap: 1.75rem;
+    padding-top: 1.1rem;
   }
   .section-title { margin-bottom: .9rem; break-after: avoid; page-break-after: avoid; }
 
-  .job { break-inside: avoid; page-break-inside: avoid; }
-  .job-multi { break-inside: auto; page-break-inside: auto; }
-  .position { break-inside: avoid; page-break-inside: avoid; }
-  .position + .position { margin-top: .8rem; }
-  .job + .job { margin-top: 1.25rem; }
-  .bullets li + li { margin-top: .15rem; }
-  .job-links { margin-top: .45rem; }
+  /* Jobs may split across pages between bullets, but a heading always
+     stays with the text that follows it, and no bullet is cut in half. */
+  .job-head, .job-company, .job-context, .position-title { break-after: avoid; page-break-after: avoid; }
+  .bullets li, .job-links { break-inside: avoid; page-break-inside: avoid; }
+  .bullets { orphans: 2; widows: 2; }
+  .position + .position { margin-top: .75rem; }
+  .job + .job { margin-top: 1.1rem; }
+  .job-context { margin-top: .3rem; }
+  .bullets { margin-top: .4rem; }
+  .bullets li { line-height: 1.45; }
+  .bullets li + li { margin-top: .12rem; }
+  .job-links { margin-top: .4rem; }
+  .job-links .store-play { display: none; }  /* the play icon already says Google Play */
 
   .sidebar { display: block; }
   .sidebar > section + section { margin-top: 1.5rem; }
   .skill-group { break-inside: avoid; }
+  .sidebar > section:not(.skills) { break-inside: avoid; page-break-inside: avoid; }
 }
 
 @media (prefers-reduced-motion: reduce) {
