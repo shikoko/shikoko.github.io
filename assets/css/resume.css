@@ -88,7 +88,7 @@ a:focus-visible, button:focus-visible {
   border-radius: 4px;
 }
 
-h1, h2, h3, p, ul, ol { margin: 0; }
+h1, h2, h3, h4, p, ul, ol { margin: 0; }
 ul, ol { padding: 0; }
 
 .icon {
@@ -386,6 +386,60 @@ ul, ol { padding: 0; }
   border-left: 1px solid var(--line);
 }
 
+/* One employer, several positions */
+.role-count {
+  display: inline-block;
+  padding: .05rem .5rem;
+  font-family: var(--font-mono);
+  font-size: .68rem;
+  font-weight: 600;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  vertical-align: .1em;
+  color: var(--accent);
+  background: var(--accent-soft);
+  border-radius: 999px;
+}
+.positions {
+  position: relative;
+  margin-top: 1rem;
+  list-style: none;
+}
+.positions::before {
+  content: "";
+  position: absolute;
+  left: 3px;
+  top: .55rem;
+  bottom: .55rem;
+  width: 2px;
+  border-radius: 2px;
+  background: var(--accent-soft);
+}
+.position {
+  position: relative;
+  padding-left: 1.3rem;
+}
+.position + .position { margin-top: 1.2rem; }
+.position::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: .45rem;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--paper);
+  border: 2px solid var(--accent);
+}
+.position:first-child::before { background: var(--accent); }
+.position-role {
+  font-size: 1rem;
+  font-weight: 650;
+  line-height: 1.4;
+  color: var(--ink);
+}
+.position .job-context { margin-top: .3rem; }
+
 /* ---------- Sidebar ---------- */
 
 .sidebar > section + section { margin-top: 2.25rem; }
@@ -534,6 +588,9 @@ ul, ol { padding: 0; }
   .section-title { margin-bottom: .9rem; break-after: avoid; page-break-after: avoid; }
 
   .job { break-inside: avoid; page-break-inside: avoid; }
+  .job-multi { break-inside: auto; page-break-inside: auto; }
+  .position { break-inside: avoid; page-break-inside: avoid; }
+  .position + .position { margin-top: .8rem; }
   .job + .job { margin-top: 1.25rem; }
   .bullets li + li { margin-top: .15rem; }
   .job-links { margin-top: .45rem; }
