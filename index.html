@@ -19,7 +19,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;650;700;750&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/resume.css?v=6">
+  <link rel="stylesheet" href="assets/css/resume.css?v=7">
 </head>
 
 <body>
@@ -47,7 +47,7 @@
         <li><a href="mailto:aetheern@gmail.com"><svg class="icon" aria-hidden="true"><use href="#i-mail"/></svg>aetheern@gmail.com</a></li>
         <li><a href="https://www.linkedin.com/in/bogdan-roatis/"><svg class="icon" aria-hidden="true"><use href="#i-linkedin"/></svg>linkedin.com/in/bogdan-roatis</a></li>
         <li><a href="https://github.com/shikoko"><svg class="icon icon-fill" aria-hidden="true"><use href="#i-github"/></svg>github.com/shikoko</a></li>
-        <li class="no-print"><button class="print-btn" type="button" onclick="window.print()"><svg class="icon" aria-hidden="true"><use href="#i-download"/></svg>Save as PDF</button></li>
+        <li class="no-print"><a class="print-btn" href="Bogdan-Roatis-CV.pdf" download="Bogdan Roatis - CV.pdf"><svg class="icon" aria-hidden="true"><use href="#i-download"/></svg>Download PDF</a></li>
       </ul>
     </header>
 
@@ -278,5 +278,13 @@
       </aside>
     </div>
   </main>
+  <script>
+    // When someone prints the page themselves, suggest a sensible PDF file name.
+    (function () {
+      var title = document.title;
+      addEventListener("beforeprint", function () { document.title = "Bogdan Roatis - CV"; });
+      addEventListener("afterprint", function () { document.title = title; });
+    })();
+  </script>
 </body>
 </html>
