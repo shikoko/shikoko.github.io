@@ -406,6 +406,7 @@ ul, ol { padding: 0; }
 .positions {
   position: relative;
   margin-top: 1rem;
+  margin-left: 1.1rem;
   list-style: none;
 }
 .positions::before {
@@ -542,6 +543,7 @@ ul, ol { padding: 0; }
   .job-head { flex-direction: column; gap: .15rem; }
   .sidebar { grid-template-columns: minmax(0, 1fr); }
   .sidebar .skills { grid-row: auto; }
+  .positions { margin-left: .75rem; }
 }
 
 /* ---------- Print (A4, always light) ---------- */
