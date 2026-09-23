@@ -366,6 +366,7 @@ ul, ol { padding: 0; }
 }
 .job-links a:hover { color: var(--accent); border-color: var(--accent); text-decoration: none; }
 .job-links .icon { font-size: .8rem; color: var(--accent); }
+.job-links .link-url { display: none; }
 .link-retired {
   display: inline-flex;
   align-items: center;
@@ -624,6 +625,37 @@ ul, ol { padding: 0; }
   .position::before { position: static; float: left; margin: .45rem 0 0 -1.3rem; }
   .bullets li::before { position: static; display: inline-block; vertical-align: middle; margin: 0 .57rem 0 -.95rem; }
   .retired-note, .pos-type, .role-count { font-size: .75rem; }
+
+  /* Links as readable text: label plus the address, one per line. */
+  .job-links { display: block; margin-top: .35rem; }
+  .job-links li + li { margin-top: .1rem; }
+  .job-links a {
+    display: inline;
+    padding: 0;
+    font-size: .8rem;
+    color: var(--ink-2);
+    background: none;
+    border: 0;
+    border-radius: 0;
+  }
+  .job-links a .icon { display: none; }
+  .job-links .link-label { font-weight: 600; }
+  .job-links .link-url { display: inline; margin-left: .45rem; color: var(--accent); font-weight: 400; word-break: break-all; }
+  .job-links .link-label::after { content: ":"; }
+  .link-retired { display: inline; padding: 0; font-size: .8rem; font-weight: 600; color: var(--ink-2); border: 0; }
+  .link-retired .icon { display: none; }
+  .link-retired .retired-note::before { content: ": "; margin-left: -.45rem; }
+  .retired-note {
+    margin-left: .45rem;
+    padding-left: 0;
+    font-family: var(--font-sans);
+    font-size: .8rem;
+    font-weight: 400;
+    letter-spacing: 0;
+    text-transform: none;
+    color: var(--muted);
+    border-left: 0;
+  }
   .sidebar > section:not(.skills) { break-inside: avoid; page-break-inside: avoid; }
 }
 
