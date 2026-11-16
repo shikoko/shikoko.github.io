@@ -1,0 +1,11 @@
+{
+  "name": "shikoko.github.io",
+  "private": true,
+  "description": "Bogdan Roatis's CV, built and published with GitHub Pages",
+  "scripts": {
+    "build": "node tools/build.cjs"
+  },
+  "devDependencies": {
+    "playwright": "1.63.0"
+  }
+}

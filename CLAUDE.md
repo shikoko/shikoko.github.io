@@ -1,6 +1,6 @@
 # Working on shikoko.github.io
 
-This repository is Bogdan Roatis's CV. GitHub Pages publishes `main` at https://shikoko.github.io/: the page is `index.html` with `assets/css/resume.css`, and `Bogdan-Roatis-CV.pdf` is the copy the Download PDF button saves.
+This repository is Bogdan Roatis's CV, published at https://shikoko.github.io/. The page is `index.html` with `assets/css/resume.css`. The **Deploy** workflow (`.github/workflows/deploy.yml`) builds the site with `npm run build` on every push to `main` and publishes it with GitHub Pages. The build renders two files from the page with Chromium: `Bogdan-Roatis-CV.pdf`, the copy the Download PDF button saves, and `assets/social-preview.png`, the picture shown when the link is shared. Neither is committed.
 
 ## Branches
 
@@ -28,7 +28,7 @@ Commits go out under the owner's name and are public, so they get quoted out of 
 
 - **Only facts about the change.** Plain terms: what changed and why. No commentary or chatty asides, and nothing that sounds unsure.
 - **Every sentence should read well quoted on its own.**
-- **Mention side effects** (a regenerated PDF, a bumped stylesheet version) in a final line.
+- **Mention side effects** (a bumped stylesheet version, a changed social preview card) in a final line.
 
 ### Commit messages
 
@@ -39,44 +39,13 @@ Commits go out under the owner's name and are public, so they get quoted out of 
 
 - **Start with the problem** in one or two sentences: what was wrong or missing on the CV.
 - **Changes:** a short list of what the pull request does.
-- **Checked:** how the page and the PDF were checked (screen widths, light and dark, page count), and anything that couldn't be checked, with the reason.
+- **Checked:** how the page and the built PDF were checked (screen widths, light and dark, `npm run build`), and anything that couldn't be checked, with the reason.
 
 ## Changing the CV
 
 - **Only facts the owner has confirmed.** Don't add claims, numbers or technologies that aren't already on the CV or given by the owner. Ask when unsure.
-- **Keep the PDF in step with the page.** After any change to the content or the print styles, regenerate `Bogdan-Roatis-CV.pdf` from `index.html` with Chromium (Playwright is enough), check it's still two A4 pages and that nothing is cut off, and end the commit with "Regenerates the PDF.":
-
-  ```bash
-  node -e '
-    const { chromium } = require("playwright");
-    (async () => {
-      const browser = await chromium.launch();
-      const page = await browser.newPage();
-      await page.goto("file://" + process.cwd() + "/index.html", { waitUntil: "networkidle" });
-      await page.evaluate(() => document.fonts.ready);
-      await page.evaluate(() => { document.title = "Bogdan Roatis - CV"; });
-      await page.pdf({ path: "Bogdan-Roatis-CV.pdf", preferCSSPageSize: true, printBackground: true });
-      await browser.close();
-    })();
-  '
-  ```
-
-- **Keep the social preview in step with the page.** `assets/social-preview.png` is the picture shown when the CV's link is shared (`og:image`). It's rendered from `_social-preview/card.html`, which repeats the headline and the most recent roles; Jekyll doesn't publish folders starting with `_`. When the headline or those roles change, change the card and its `og:image:alt` text in `index.html` to match, and render it again:
-
-  ```bash
-  node -e '
-    const { chromium } = require("playwright");
-    (async () => {
-      const browser = await chromium.launch();
-      const page = await browser.newPage({ viewport: { width: 1200, height: 630 } });
-      await page.goto("file://" + process.cwd() + "/_social-preview/card.html", { waitUntil: "networkidle" });
-      await page.evaluate(() => document.fonts.ready);
-      await page.screenshot({ path: "assets/social-preview.png" });
-      await browser.close();
-    })();
-  '
-  ```
-
-  The repository's own social preview on GitHub (**Settings → General → Social preview**) is the same card at 1280×640. It can only be uploaded by hand, so render it outside the repository and give it to the owner.
+- **Build the site and look at it before committing.** `npm run build` (`tools/build.cjs`) builds it into `build/site/` exactly as the Deploy workflow does: it copies the page and its assets, renders `Bogdan-Roatis-CV.pdf` and `assets/social-preview.png`, and fails if the PDF isn't two A4 pages or the fonts didn't load. Open the PDF and check nothing is cut off. In a Claude Code cloud session Playwright is already installed; elsewhere, run `npm ci` and `npx playwright install chromium` first. `build/` is ignored, so nothing it makes is committed.
+- **The workflow builds every pull request too**, so one that makes the PDF three pages fails its checks. Wait for the build to pass before merging.
+- **Keep the social preview in step with the page.** The card is `tools/social-card.html`, and it repeats the headline and the most recent roles. When those change on the page, change the card and its `og:image:alt` text in `index.html` to match. The build also writes `build/github-social-preview.png`, the same card at 1280×640 for the repository's own social preview on GitHub (**Settings → General → Social preview**). That one can only be uploaded by hand, so give it to the owner when the card changes.
 - **Bump the stylesheet version** (`resume.css?v=…` in `index.html`) whenever `assets/css/resume.css` changes, so visitors don't get a cached copy.
 - **Check the page** at phone, tablet and desktop widths, in light and dark, before committing.
