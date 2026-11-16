@@ -1,117 +1,40 @@
 # shikoko.github.io
 
-This is a responsive minimal résumé template made by Crisp, powered by [Jekyll](http://jekyllrb.com/).
-The project can be found at https://github.com/crispgm/resume
+Bogdan Roatis's CV, published at **https://shikoko.github.io/**, with a [PDF version](https://shikoko.github.io/Bogdan-Roatis-CV.pdf).
 
+## How it's made
 
-## Usage
+The CV is one hand-written page, [`index.html`](index.html) with [`assets/css/resume.css`](assets/css/resume.css): light and dark themes on screen, and an A4 print stylesheet for the PDF. There's no framework or site generator.
 
-### Local Mode
+`npm run build` ([`tools/build.cjs`](tools/build.cjs)) builds the site into `build/site/`. It copies the page and renders two files from it with Chromium, through Playwright:
 
-1. Clone the repo
+- `Bogdan-Roatis-CV.pdf`, the copy the **Download PDF** button saves. The build fails if it isn't two A4 pages.
+- `assets/social-preview.png`, the picture shown when the link is shared, from [`tools/social-card.html`](tools/social-card.html).
 
-    ```shell
-    git clone https://github.com/crispgm/resume.git
-    ```
+The [Deploy workflow](.github/workflows/deploy.yml) runs the build for every pull request into `main`, and publishes every push to `main` with GitHub Pages.
 
-2. Install Jekyll
+## Building it locally
 
-    ```shell
-    gem install jekyll
-    ```
+You need Node.js 20 or newer (the workflow uses 22). From the repository's folder:
 
-3. Config your résumé data
-
-    The `baseurl` is required in `_config.yml` if you serve this page as part of your website. And your contact information, __EDUCATION__, __SKILLS__, __EXPERIENCE__, and __PROJECTS__ data will be set in `_data/resume.yml`.
-
-4. Run and Debug
-
-    ```shell
-    jekyll serve
-    ```
-
-5. Build
-
-    ```shell
-    jekyll build
-    ```
-    
-    
-## Data Format
-
-### Contact
-
-```yaml
-contact:
-  - icon: fa-envelope
-    text: youremail@example.com
-  - icon: fa-phone-square
-    text: your-phone-num
-  - icon: fa-globe
-    text: your-website.com
-    link: https://crispgm.github.io/resume/resume.html
+```bash
+npm ci
 ```
 
-FontAwesome iconfont is embedded, so use the `fa-` class name as icon. `link` is optional, present if you want a link for your web version.
-
-## Colors
-
-There are a set of colorscheme. `color` may be specified in `_config.yml`. The default colorscheme is gray.
-
-```yaml
-color: gray
+```bash
+npx playwright install chromium
 ```
 
-Colors powered by [Open-Color](https://yeun.github.io/open-color/):
+```bash
+npm run build
+```
 
-- red
-- pink
-- grape
-- violet
-- indigo
-- blue
-- cyan
-- teal
-- green
-- lime
-- yellow
-- orange
+Then open `build/site/index.html` and `build/site/Bogdan-Roatis-CV.pdf`.
 
-Colors powered by [Nord](https://www.nordtheme.com/):
+## Making changes
 
-- nord
+[`CLAUDE.md`](CLAUDE.md) has the rules for working here: one branch per change, pull requests into `main` merged with a merge commit, commit message style, and how to keep the PDF and the social preview in step with the page.
 
+## History
 
-## Extending Sections
-
-1. Add new section in `_data/resume.yml`
-
-  ```yaml
-  languages:
-    - name: English
-      proficiency: Professional working proficiency
-    - name: Mandarin Chinese
-      proficiency: Native or bilingual proficiency
-  ```
-
-2. Add section to `_layouts/resume.html`:
-
-  ```html
-  <section id="languages">
-    <div class="section-title">
-      Language
-    </div>
-    <div class="section-content">
-      {% for lang in site.data.resume.languages %}
-      <div class="block">
-        <div class="block-title">
-          {{ lang.name }}
-        </div>
-        <div class="block-content">
-          {{ lang.proficiency }}
-        </div>
-      </div>
-      {% endfor %}
-    </div>
-  </section>
-  ```
+Started in 2019 from Crisp's [Minimal Résumé](https://github.com/crispgm/resume) Jekyll template, and rewritten as a hand-written page in 2026.
