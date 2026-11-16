@@ -61,5 +61,22 @@ Commits go out under the owner's name and are public, so they get quoted out of 
   '
   ```
 
+- **Keep the social preview in step with the page.** `assets/social-preview.png` is the picture shown when the CV's link is shared (`og:image`). It's rendered from `_social-preview/card.html`, which repeats the headline and the most recent roles; Jekyll doesn't publish folders starting with `_`. When the headline or those roles change, change the card and its `og:image:alt` text in `index.html` to match, and render it again:
+
+  ```bash
+  node -e '
+    const { chromium } = require("playwright");
+    (async () => {
+      const browser = await chromium.launch();
+      const page = await browser.newPage({ viewport: { width: 1200, height: 630 } });
+      await page.goto("file://" + process.cwd() + "/_social-preview/card.html", { waitUntil: "networkidle" });
+      await page.evaluate(() => document.fonts.ready);
+      await page.screenshot({ path: "assets/social-preview.png" });
+      await browser.close();
+    })();
+  '
+  ```
+
+  The repository's own social preview on GitHub (**Settings → General → Social preview**) is the same card at 1280×640. It can only be uploaded by hand, so render it outside the repository and give it to the owner.
 - **Bump the stylesheet version** (`resume.css?v=…` in `index.html`) whenever `assets/css/resume.css` changes, so visitors don't get a cached copy.
 - **Check the page** at phone, tablet and desktop widths, in light and dark, before committing.
