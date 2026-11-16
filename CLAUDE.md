@@ -1,13 +1,13 @@
 # Working on shikoko.github.io
 
-This repository is Bogdan Roatis's CV. GitHub Pages publishes `master` at https://shikoko.github.io/: the page is `index.html` with `assets/css/resume.css`, and `Bogdan-Roatis-CV.pdf` is the copy the Download PDF button saves.
+This repository is Bogdan Roatis's CV. GitHub Pages publishes `main` at https://shikoko.github.io/: the page is `index.html` with `assets/css/resume.css`, and `Bogdan-Roatis-CV.pdf` is the copy the Download PDF button saves.
 
 ## Branches
 
-- **One branch per change**, made from the latest `master`, and named after what the change does: short, lowercase, words joined by hyphens, no prefix. For example `tributary-project`, `stem-end-date`, `pdf-link-text`. Two unrelated changes get two branches.
+- **One branch per change**, made from the latest `main`, and named after what the change does: short, lowercase, words joined by hyphens, no prefix. For example `tributary-project`, `stem-end-date`, `pdf-link-text`. Two unrelated changes get two branches.
 - **Don't use the `claude/…` branch a cloud session is given** (names like `claude/intelligent-davinci-vajqt0`). Make the branch named after the change instead, and push that one. If the change grows into something else, rename the branch to match before pushing.
-- **`master` only changes through a pull request** from a change's branch, because whatever is on `master` is live. Merge it with a merge commit, never "Squash and merge" or "Rebase and merge".
-- **Rebase before merging:** rebase the branch onto the latest `master` and push it with `--force-with-lease`, so the graph shows a short loop that joins straight back in.
+- **`main` only changes through a pull request** from a change's branch, because whatever is on `main` is live. Merge it with a merge commit, never "Squash and merge" or "Rebase and merge".
+- **Rebase before merging:** rebase the branch onto the latest `main` and push it with `--force-with-lease`, so the graph shows a short loop that joins straight back in.
 - **Delete the branch once it's merged.**
 
 ## Commits and pull requests
@@ -17,8 +17,8 @@ This repository is Bogdan Roatis's CV. GitHub Pages publishes `master` at https:
 - **Commits are the owner's.** Author and committer are the repository's owner, never Claude, and commits from a cloud session aren't signed with the session's key. Before committing in a cloud session, set this in the clone's own config (not the global one):
 
   ```bash
-  git config user.name "$(git log -1 --format=%an master)"
-  git config user.email "$(git log -1 --format=%ae master)"
+  git config user.name "$(git log -1 --no-merges --format=%an origin/main)"
+  git config user.email "$(git log -1 --no-merges --format=%ae origin/main)"
   git config commit.gpgsign false
   ```
 
