@@ -22,9 +22,12 @@ async function open(browser, file, viewport) {
   await page.goto(fileUrl(file), { waitUntil: "networkidle" });
   await page.evaluate(() => document.fonts.ready);
   // The fonts come from Google Fonts. Without them the PDF and the card
-  // would quietly use fallback fonts, so stop instead.
+  // would quietly use fallback fonts, so stop instead. Each is checked at a
+  // weight the page uses: the serif only appears in semibold headings.
   const missing = await page.evaluate(() =>
-    ["Newsreader", "Google Sans", "JetBrains Mono"].filter((family) => !document.fonts.check(`16px "${family}"`))
+    [["Newsreader", "600"], ["Google Sans", "400"], ["JetBrains Mono", "400"]]
+      .filter(([family, weight]) => !document.fonts.check(`${weight} 16px "${family}"`))
+      .map(([family]) => family)
   );
   if (missing.length) throw new Error(`${file}: ${missing.join(" and ")} didn't load.`);
   return page;

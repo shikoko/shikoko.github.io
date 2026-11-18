@@ -312,7 +312,7 @@ a:focus-visible, summary:focus-visible {
 .org {
   font-family: var(--serif);
   font-size: 2rem;
-  font-weight: 400;
+  font-weight: 600;
   line-height: 1.1;
   letter-spacing: -.01em;
   color: var(--ink);
@@ -381,7 +381,7 @@ a:focus-visible, summary:focus-visible {
 .role-name {
   font-family: var(--serif);
   font-size: 1.5rem;
-  font-weight: 400;
+  font-weight: 600;
   line-height: 1.25;
   color: var(--ink);
 }
@@ -438,7 +438,7 @@ a:focus-visible, summary:focus-visible {
   margin-bottom: .7rem;
   font-family: var(--serif);
   font-size: 1.25rem;
-  font-weight: 400;
+  font-weight: 600;
   color: var(--ink);
 }
 .skill-group li { font-size: .95rem; line-height: 1.75; }
@@ -585,12 +585,16 @@ a:focus-visible, summary:focus-visible {
 
   .project-lede { font-size: 1.05rem; }
 
-  /* Each skill group on one line, in two columns */
-  .skill-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .45rem 2rem; }
-  .skill-group h3 { display: inline; margin: 0 .5rem 0 0; font-size: 1.12rem; }
-  .skill-group ul, .skill-group li { display: inline; }
-  .skill-group li { font-size: .95rem; line-height: 1.5; }
-  .skill-group li + li::before { content: ", "; }
+  /* One row per category, like the entries: the category on the left, its
+     skills on one line on the right, with the same vertical rule between. */
+  .skill-grid { display: block; }
+  .skill-group { display: grid; grid-template-columns: var(--side) minmax(0, 1fr); column-gap: var(--column-gap); align-items: baseline; }
+  .skill-group h3 { margin: 0; font-size: 1.15rem; }
+  .skill-group ul { padding: .28rem 0 .28rem var(--column-gap); border-left: 1px solid var(--line); }
+  .skill-group:first-child ul { padding-top: 0; }
+  .skill-group:last-child ul { padding-bottom: 0; }
+  .skill-group li { display: inline; font-size: .95rem; line-height: 1.5; }
+  .skill-group li + li::before { content: " · "; color: var(--muted); }
 
   /* Dates and place share a line in the narrow column */
   .entry-side .dates, .entry-side .place { display: inline; white-space: normal; }
