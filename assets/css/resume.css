@@ -327,6 +327,7 @@ a:focus-visible, summary:focus-visible {
 .org-about {
   margin-top: .45rem;
   font-size: .95rem;
+  font-style: italic;
   line-height: 1.45;
   color: var(--muted);
 }
@@ -387,6 +388,7 @@ a:focus-visible, summary:focus-visible {
 .role-context {
   margin-top: .55rem;
   font-size: .97rem;
+  font-style: italic;
   line-height: 1.55;
   color: var(--muted);
 }
