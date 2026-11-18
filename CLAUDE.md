@@ -57,4 +57,4 @@ Commits go out under the owner's name and are public, so they get quoted out of 
 - **Space separates things, not lines.** The only drawn lines are the vertical rule between each entry's left column (organisation, dates, links) and its details. Don't add borders, cards, badges, timelines or decorative icons.
 - **Every role is shown in full.** Nothing folds away or is shortened to save space; the most recent roles come first and simply have the most to say.
 - **No skill ratings,** percentages or progress bars: skills are plain lists under a few categories.
-- **Light and dark:** the page follows the system setting until the theme button in the header picks one, which is remembered on that device. Print and the PDF are always light.
+- **Light and dark:** the page follows the system setting until the theme button in the header picks one, which is remembered on that device. Switching reveals the new theme in a circle growing from the button while its moon and sun icons turn into each other; with reduced motion, or in browsers without view transitions, it switches at once. Print and the PDF are always light.
