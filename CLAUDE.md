@@ -52,7 +52,7 @@ Commits go out under the owner's name and are public, so they get quoted out of 
 
 ## Design
 
-- **Minimal and editorial:** a cream page, near-black text and one ink-blue accent. Google Sans for everything: the name, headings (semibold for organisation and role names) and all running text; JetBrains Mono for dates and section labels.
+- **Minimal and editorial:** a cream page, near-black text and one ink-blue accent. Google Sans for everything: the name, headings (semibold for organisation and role names) and all running text, with dates in smaller grey type; JetBrains Mono only for section labels and the contact labels.
 - **Readable greys:** secondary text uses `--muted`, which keeps at least 7:1 contrast (WCAG AAA) in both themes and in print.
 - **Space separates things, not lines.** The only drawn lines are the vertical rule between each entry's left column (organisation, dates, links) and its details. Don't add borders, cards, badges, timelines or decorative icons.
 - **Every role is shown in full.** Nothing folds away or is shortened to save space; the most recent roles come first and simply have the most to say.
