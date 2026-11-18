@@ -24,11 +24,11 @@
     // A theme chosen with the theme button wins over the system setting, before anything is drawn.
     try { var saved = localStorage.getItem("theme"); if (saved === "light" || saved === "dark") document.documentElement.dataset.theme = saved; } catch (e) {}
   </script>
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%234d5e2f'/%3E%3Ctext x='32' y='43' font-family='Georgia,serif' font-size='30' fill='%23f8f6f0' text-anchor='middle'%3EBR%3C/text%3E%3C/svg%3E">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%232b4a6f'/%3E%3Ctext x='32' y='43' font-family='Georgia,serif' font-size='30' fill='%23f8f6f0' text-anchor='middle'%3EBR%3C/text%3E%3C/svg%3E">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/resume.css?v=10">
+  <link rel="stylesheet" href="assets/css/resume.css?v=11">
 </head>
 
 <body>
@@ -100,9 +100,9 @@
                 <li>Built the StemFM iOS app from the ground up in SwiftUI, taking it from initial development through App Store release.</li>
                 <li>Owned the app's architecture and technical direction as its primary code owner: reviewed every contributor's work, merged all changes, oversaw integrations and code quality, and shipped each new version.</li>
                 <li>Developed complex audio playback and manipulation features, including multi-stem playback and real-time audio controls, working extensively with AVFoundation.</li>
-                <li>Set up CI/CD for PR checks, TestFlight distribution and App Store releases on Azure DevOps, then migrated it to GitHub Actions and Fastlane.</li>
+                <li>Set up CI/CD for PR checks, TestFlight distribution and App Store releases on Azure Pipelines, then migrated it to GitHub Actions and Fastlane.</li>
                 <li>Migrated the test suite from XCTest to Swift Testing.</li>
-                <li>Contributed to an AI-assisted interface, added later in the product's life, that simplifies the creative process.</li>
+                <li>Built an AI-assisted interface, added later in the product's life, that simplifies the creative process.</li>
                 <li>Adopted AI-assisted development with Claude Code, Cursor and ChatGPT while keeping ownership of the architecture: tested and reviewed every generated change, and added an automated AI review step to each pull request.</li>
               </ul>
             </article>
@@ -143,7 +143,7 @@
                 <h4 class="role-name">Mobile Team Lead</h4>
               </div>
               <ul class="bullets">
-                <li>Led a four-engineer mobile team across Android and iOS.</li>
+                <li>Led and mentored a four-engineer mobile team across Android and iOS.</li>
                 <li>Designed and implemented the Android app's entire design system in Jetpack Compose.</li>
                 <li>Restructured the Android app's architecture and modules, refactored legacy code and enforced idiomatic Kotlin.</li>
                 <li>Established engineering practices, an architecture template and technical documentation as a reference for future development.</li>
@@ -313,8 +313,8 @@
         <div class="skill-group"><h3>iOS</h3><ul><li>Swift</li><li>SwiftUI</li><li>Combine</li><li>Swift Concurrency</li><li>AVFoundation</li></ul></div>
         <div class="skill-group"><h3>Architecture</h3><ul><li>Clean Architecture</li><li>MVVM</li><li>Modularisation</li><li>Design Systems</li></ul></div>
         <div class="skill-group"><h3>Data &amp; Networking</h3><ul><li>GraphQL</li><li>REST APIs</li><li>Core Data</li><li>SQLite</li></ul></div>
-        <div class="skill-group"><h3>CI/CD &amp; Automation</h3><ul><li>GitHub Actions</li><li>Fastlane</li><li>Azure DevOps</li><li>App Store Connect</li><li>TestFlight</li></ul></div>
-        <div class="skill-group"><h3>Testing</h3><ul><li>Swift Testing</li><li>XCTest</li><li>Unit Testing</li><li>Integration Testing</li></ul></div>
+        <div class="skill-group"><h3>CI/CD &amp; Automation</h3><ul><li>GitHub Actions</li><li>Fastlane</li><li>Azure Pipelines (Azure DevOps)</li><li>App Store Connect</li><li>TestFlight</li></ul></div>
+        <div class="skill-group"><h3>Testing</h3><ul><li>Swift Testing</li><li>XCTest</li><li>Unit Testing</li></ul></div>
         <div class="skill-group"><h3>Technical Leadership</h3><ul><li>Technical Architecture</li><li>Code Reviews</li><li>Mentoring</li><li>Engineering Standards</li><li>Technical Documentation</li><li>Team Leadership</li></ul></div>
         <div class="skill-group"><h3>AI-assisted Development</h3><ul><li>Claude Code</li><li>Cursor</li><li>ChatGPT</li></ul></div>
       </div>

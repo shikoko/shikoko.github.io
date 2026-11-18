@@ -52,7 +52,7 @@ Commits go out under the owner's name and are public, so they get quoted out of 
 
 ## Design
 
-- **Minimal and editorial:** a cream page, near-black text and one muted olive accent. Newsreader (serif) for the name, headings and summary, Inter for body text and navigation, JetBrains Mono for dates and section labels.
+- **Minimal and editorial:** a cream page, near-black text and one ink-blue accent. Newsreader (serif) for the name, headings and summary, Inter for body text and navigation, JetBrains Mono for dates and section labels.
 - **Space separates things, not lines.** The only drawn lines are the vertical rule between each entry's left column (organisation, dates, links) and its details. Don't add borders, cards, badges, timelines or decorative icons.
 - **Every role is shown in full.** Nothing folds away or is shortened to save space; the most recent roles come first and simply have the most to say.
 - **No skill ratings,** percentages or progress bars: skills are plain lists under a few categories.

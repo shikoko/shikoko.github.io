@@ -1,6 +1,7 @@
 /* ==========================================================================
    Bogdan Roatis — CV
    Editorial layout: serif headings, sans-serif text, monospace dates.
+   One accent colour: ink blue.
    Screen: cream, with a warm dark theme. Print: A4 on white.
    ========================================================================== */
 
@@ -11,8 +12,8 @@
   --ink-2: #3b3a36;
   --muted: #69655c;
   --line: #e2ddd1;
-  --accent: #4d5e2f;
-  --accent-soft: rgba(77, 94, 47, .1);
+  --accent: #2b4a6f;
+  --accent-soft: rgba(43, 74, 111, .1);
 
   --serif: "Newsreader", Georgia, "Times New Roman", serif;
   --sans: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
@@ -33,8 +34,8 @@
     --ink-2: #cfcac0;
     --muted: #a29d92;
     --line: #33312c;
-    --accent: #b2c08f;
-    --accent-soft: rgba(178, 192, 143, .12);
+    --accent: #a3bbdb;
+    --accent-soft: rgba(163, 187, 219, .12);
     color-scheme: dark;
   }
 }
@@ -46,8 +47,8 @@
   --ink-2: #cfcac0;
   --muted: #a29d92;
   --line: #33312c;
-  --accent: #b2c08f;
-  --accent-soft: rgba(178, 192, 143, .12);
+  --accent: #a3bbdb;
+  --accent-soft: rgba(163, 187, 219, .12);
   color-scheme: dark;
 }
 
@@ -537,7 +538,7 @@ a:focus-visible, summary:focus-visible {
     --ink-2: #353430;
     --muted: #615d55;
     --line: #dcd7cc;
-    --accent: #4d5e2f;
+    --accent: #2b4a6f;
     --side: 27%;
     --column-gap: 1.6rem;
     color-scheme: light;
