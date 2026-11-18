@@ -28,7 +28,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Google+Sans:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/resume.css?v=22">
+  <link rel="stylesheet" href="assets/css/resume.css?v=23">
 </head>
 
 <body>
@@ -374,11 +374,24 @@
         toggle.title = label.textContent;
         document.querySelectorAll('meta[name="theme-color"]').forEach(function (m) { m.content = dark ? "#1a1916" : "#f8f6f0"; });
       }
-      toggle.addEventListener("click", function () {
-        var next = isDark() ? "light" : "dark";
+      var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+      function setTheme(next) {
         root.dataset.theme = next;
         try { localStorage.setItem("theme", next); } catch (e) {}
         showTheme();
+      }
+      // Switching reveals the new theme in a circle that grows from the button to the farthest
+      // corner of the window. Without view transitions, or with reduced motion, it switches at once.
+      toggle.addEventListener("click", function () {
+        var next = isDark() ? "light" : "dark";
+        if (!document.startViewTransition || reduceMotion.matches) return setTheme(next);
+        var r = toggle.getBoundingClientRect(), x = r.left + r.width / 2, y = r.top + r.height / 2;
+        var end = Math.hypot(Math.max(x, innerWidth - x), Math.max(y, innerHeight - y));
+        var at = " at " + x + "px " + y + "px)";
+        document.startViewTransition(function () { setTheme(next); }).ready.then(function () {
+          root.animate({ clipPath: ["circle(0px" + at, "circle(" + end + "px" + at] },
+            { duration: 650, easing: "cubic-bezier(.4, 0, .2, 1)", pseudoElement: "::view-transition-new(root)" });
+        }).catch(function () {});
       });
       if (systemDark.addEventListener) systemDark.addEventListener("change", showTheme);
       toggle.hidden = false;

@@ -190,13 +190,19 @@ a:focus-visible, summary:focus-visible {
 .theme-toggle[hidden] { display: none; }
 .theme-toggle:hover { color: var(--accent); }
 .theme-toggle:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
-.theme-toggle .icon { grid-area: 1 / 1; font-size: 1.1rem; }
-.theme-toggle .icon-sun { display: none; }
-:root[data-theme="dark"] .theme-toggle .icon-sun { display: block; }
-:root[data-theme="dark"] .theme-toggle .icon-moon { display: none; }
+/* Both icons share one cell: the moon turns and shrinks away as the sun
+   turns and grows in, and back. */
+.theme-toggle .icon {
+  grid-area: 1 / 1;
+  font-size: 1.1rem;
+  transition: transform .5s cubic-bezier(.34, 1.4, .64, 1), opacity .25s ease;
+}
+.theme-toggle .icon-sun { opacity: 0; transform: rotate(-90deg) scale(.4); }
+:root[data-theme="dark"] .theme-toggle .icon-sun { opacity: 1; transform: none; }
+:root[data-theme="dark"] .theme-toggle .icon-moon { opacity: 0; transform: rotate(90deg) scale(.4); }
 @media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) .theme-toggle .icon-sun { display: block; }
-  :root:not([data-theme="light"]) .theme-toggle .icon-moon { display: none; }
+  :root:not([data-theme="light"]) .theme-toggle .icon-sun { opacity: 1; transform: none; }
+  :root:not([data-theme="light"]) .theme-toggle .icon-moon { opacity: 0; transform: rotate(90deg) scale(.4); }
 }
 
 .cv-button {
@@ -217,6 +223,10 @@ a:focus-visible, summary:focus-visible {
 /* Trimmed to its capitals and baseline, so the padding centres the label
    in the pill, and the icon centres on it. */
 .cv-label { line-height: 1; text-box: trim-both cap alphabetic; }
+
+/* The theme button reveals the new theme in a circle growing from it (see
+   the script), so the view transition's default crossfade is turned off. */
+::view-transition-old(root), ::view-transition-new(root) { animation: none; mix-blend-mode: normal; }
 
 /* ---------- Introduction ---------- */
 
@@ -524,7 +534,7 @@ a:focus-visible, summary:focus-visible {
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  .cv-button { transition: none; }
+  .cv-button, .theme-toggle .icon { transition: none; }
 }
 
 /* ---------- Print (A4, on white) ---------- */
