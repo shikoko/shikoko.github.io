@@ -24,7 +24,7 @@ async function open(browser, file, viewport) {
   // The fonts come from Google Fonts. Without them the PDF and the card
   // would quietly use fallback fonts, so stop instead.
   const missing = await page.evaluate(() =>
-    ["Newsreader", "Inter", "JetBrains Mono"].filter((family) => !document.fonts.check(`16px "${family}"`))
+    ["Newsreader", "Google Sans", "JetBrains Mono"].filter((family) => !document.fonts.check(`16px "${family}"`))
   );
   if (missing.length) throw new Error(`${file}: ${missing.join(" and ")} didn't load.`);
   return page;

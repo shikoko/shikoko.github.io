@@ -44,7 +44,7 @@ Commits go out under the owner's name and are public, so they get quoted out of 
 ## Changing the CV
 
 - **Only facts the owner has confirmed.** Don't add claims, numbers or technologies that aren't already on the CV or given by the owner. Ask when unsure.
-- **Build the site and look at it before committing.** `npm run build` (`tools/build.cjs`) builds it into `build/site/` exactly as the Deploy workflow does: it copies the page and its assets, renders `Bogdan-Roatis-CV.pdf` and `assets/social-preview.png`, and fails if the PDF is longer than three A4 pages or the fonts (Newsreader, Inter, JetBrains Mono) didn't load. Open the PDF and check nothing is cut off. In a Claude Code cloud session Playwright is already installed; elsewhere, run `npm ci` and `npx playwright install chromium` first. `build/` is ignored, so nothing it makes is committed.
+- **Build the site and look at it before committing.** `npm run build` (`tools/build.cjs`) builds it into `build/site/` exactly as the Deploy workflow does: it copies the page and its assets, renders `Bogdan-Roatis-CV.pdf` and `assets/social-preview.png`, and fails if the PDF is longer than three A4 pages or the fonts (Newsreader, Google Sans, JetBrains Mono) didn't load. Open the PDF and check nothing is cut off. In a Claude Code cloud session Playwright is already installed; elsewhere, run `npm ci` and `npx playwright install chromium` first. `build/` is ignored, so nothing it makes is committed.
 - **The workflow builds every pull request too**, so one that makes the PDF longer than three pages fails its checks. Wait for the build to pass before merging.
 - **Keep the social preview in step with the page.** The card is `tools/social-card.html`, and it repeats the title under the name and the most recent roles. When those change on the page, change the card and its `og:image:alt` text in `index.html` to match. The build also writes `build/github-social-preview.png`, the same card at 1280×640 for the repository's own social preview on GitHub (**Settings → General → Social preview**). That one can only be uploaded by hand, so give it to the owner when the card changes.
 - **Bump the stylesheet version** (`resume.css?v=…` in `index.html`) whenever `assets/css/resume.css` changes, so visitors don't get a cached copy.
@@ -52,7 +52,7 @@ Commits go out under the owner's name and are public, so they get quoted out of 
 
 ## Design
 
-- **Minimal and editorial:** a cream page, near-black text and one ink-blue accent. Newsreader (serif) for the name, headings and summary, Inter for body text and navigation, JetBrains Mono for dates and section labels.
+- **Minimal and editorial:** a cream page, near-black text and one ink-blue accent. Google Sans for the name, the title under it, body text and navigation; Newsreader (serif) for the summary, the organisation and role names and the other headings; JetBrains Mono for dates and section labels.
 - **Space separates things, not lines.** The only drawn lines are the vertical rule between each entry's left column (organisation, dates, links) and its details. Don't add borders, cards, badges, timelines or decorative icons.
 - **Every role is shown in full.** Nothing folds away or is shortened to save space; the most recent roles come first and simply have the most to say.
 - **No skill ratings,** percentages or progress bars: skills are plain lists under a few categories.
