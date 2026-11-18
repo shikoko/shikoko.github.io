@@ -277,6 +277,9 @@ a:focus-visible, summary:focus-visible {
 }
 .profile-links a:hover { color: var(--accent); }
 .profile-links .icon { font-size: 1.05rem; }
+/* Trim each label to its capital letters, so the icons centre on the letters
+   rather than on the line (where the font supports it). */
+.profile-links a > span, .profile-links .location > span { text-box: trim-both cap alphabetic; }
 .profile-links .print-label { display: none; }
 .profile-links .location { color: var(--muted); font-weight: 400; }
 
