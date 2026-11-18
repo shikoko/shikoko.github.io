@@ -30,8 +30,12 @@ jobs:
           node-version: 22
           cache: npm
       - run: npm ci
+      # The runner image already has the system libraries Chromium needs.
+      # --with-deps would only add fallback fonts the build never draws
+      # with (the page and the card load their own), and fetching them from
+      # the Ubuntu mirror once took long enough to cancel the job.
       - name: Install Chromium
-        run: npx playwright install --with-deps chromium
+        run: npx playwright install chromium
       - name: Build the site
         run: npm run build
       - uses: actions/upload-pages-artifact@v5
