@@ -140,9 +140,13 @@ a:focus-visible, summary:focus-visible {
   backdrop-filter: blur(8px);
 }
 
+/* The name, the section links and the CV label share one baseline, and
+   the row is centred in the header (align-content needs flex-wrap). */
 .header-inner {
   display: flex;
-  align-items: center;
+  flex-wrap: wrap;
+  align-content: center;
+  align-items: baseline;
   gap: 2rem;
   min-height: 4rem;
 }
@@ -176,6 +180,7 @@ a:focus-visible, summary:focus-visible {
   height: 2.25rem;
   margin-right: -.6rem;
   padding: 0;
+  align-self: center;
   color: var(--ink-2);
   background: none;
   border: 0;
@@ -198,7 +203,7 @@ a:focus-visible, summary:focus-visible {
   display: inline-flex;
   align-items: center;
   gap: .45rem;
-  padding: .4rem 1rem;
+  padding: .65rem 1rem;
   font-size: .9rem;
   font-weight: 500;
   color: var(--ink);
@@ -209,6 +214,9 @@ a:focus-visible, summary:focus-visible {
 }
 .cv-button:hover { border-color: var(--accent); color: var(--accent); }
 .cv-button .icon { font-size: .95rem; }
+/* Trimmed to its capitals and baseline, so the padding centres the label
+   in the pill, and the icon centres on it. */
+.cv-label { line-height: 1; text-box: trim-both cap alphabetic; }
 
 /* ---------- Introduction ---------- */
 
