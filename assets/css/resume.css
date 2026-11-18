@@ -1,7 +1,7 @@
 /* ==========================================================================
    Bogdan Roatis — CV
-   Editorial layout: Google Sans for the name and text, a serif for the
-   summary and headings, monospace for dates.
+   Editorial layout: Google Sans for the name and all running text, a
+   serif for headings, monospace for dates.
    One accent colour: ink blue.
    Screen: cream, with a warm dark theme. Print: A4 on white.
    ========================================================================== */
@@ -11,7 +11,7 @@
   --paper-veil: rgba(248, 246, 240, .92);
   --ink: #1d1d1b;
   --ink-2: #3b3a36;
-  --muted: #69655c;
+  --muted: #57534b;
   --line: #e2ddd1;
   --accent: #2b4a6f;
   --accent-soft: rgba(43, 74, 111, .1);
@@ -33,7 +33,7 @@
     --paper-veil: rgba(26, 25, 22, .92);
     --ink: #ece8df;
     --ink-2: #cfcac0;
-    --muted: #a29d92;
+    --muted: #b8b3a8;
     --line: #33312c;
     --accent: #a3bbdb;
     --accent-soft: rgba(163, 187, 219, .12);
@@ -46,7 +46,7 @@
   --paper-veil: rgba(26, 25, 22, .92);
   --ink: #ece8df;
   --ink-2: #cfcac0;
-  --muted: #a29d92;
+  --muted: #b8b3a8;
   --line: #33312c;
   --accent: #a3bbdb;
   --accent-soft: rgba(163, 187, 219, .12);
@@ -247,9 +247,8 @@ a:focus-visible, summary:focus-visible {
 .summary {
   max-width: 41rem;
   margin-top: 1.9rem;
-  font-family: var(--serif);
-  font-size: 1.2rem;
-  line-height: 1.6;
+  font-size: 1.12rem;
+  line-height: 1.65;
   color: var(--ink-2);
 }
 .summary p + p { margin-top: .9rem; }
@@ -326,17 +325,15 @@ a:focus-visible, summary:focus-visible {
 }
 
 .org-about {
-  margin-top: .4rem;
-  font-family: var(--serif);
-  font-size: 1.12rem;
-  font-style: italic;
-  line-height: 1.4;
+  margin-top: .45rem;
+  font-size: .95rem;
+  line-height: 1.45;
   color: var(--muted);
 }
 
 .dates {
   font-family: var(--mono);
-  font-size: .76rem;
+  font-size: .8rem;
   letter-spacing: .06em;
   text-transform: uppercase;
   color: var(--muted);
@@ -388,11 +385,9 @@ a:focus-visible, summary:focus-visible {
 .role-head .dates { flex-basis: 100%; }
 
 .role-context {
-  margin-top: .6rem;
-  font-family: var(--serif);
-  font-size: 1.08rem;
-  font-style: italic;
-  line-height: 1.5;
+  margin-top: .55rem;
+  font-size: .97rem;
+  line-height: 1.55;
   color: var(--muted);
 }
 
@@ -422,8 +417,7 @@ a:focus-visible, summary:focus-visible {
 
 .project-lede {
   max-width: 38rem;
-  font-family: var(--serif);
-  font-size: 1.25rem;
+  font-size: 1.12rem;
   line-height: 1.5;
   color: var(--ink);
 }
@@ -474,8 +468,7 @@ a:focus-visible, summary:focus-visible {
   align-self: center;
 }
 .contact-list a {
-  font-family: var(--serif);
-  font-size: 1.2rem;
+  font-size: 1.05rem;
   color: var(--ink);
   text-decoration-color: color-mix(in srgb, var(--accent) 45%, transparent);
 }
@@ -503,7 +496,7 @@ a:focus-visible, summary:focus-visible {
   .nav a { font-size: .9rem; }
 
   .intro { padding: 3rem 0 3.2rem; }
-  .summary { font-size: 1.1rem; }
+  .summary { font-size: 1.05rem; }
   .profile-links { gap: .8rem 1.5rem; }
 
   .section { padding: 3.6rem 0 1rem; }
@@ -538,7 +531,7 @@ a:focus-visible, summary:focus-visible {
     --paper: #ffffff;
     --ink: #161614;
     --ink-2: #353430;
-    --muted: #615d55;
+    --muted: #57534b;
     --line: #dcd7cc;
     --accent: #2b4a6f;
     --side: 27%;
@@ -560,7 +553,7 @@ a:focus-visible, summary:focus-visible {
   .intro::before { width: 2.2rem; margin-bottom: 1rem; }
   .name { font-size: 3.2rem; }
   .role-title { margin-top: .3rem; font-size: 1.55rem; }
-  .summary { max-width: none; margin-top: 1rem; font-size: 1.12rem; line-height: 1.5; }
+  .summary { max-width: none; margin-top: 1rem; font-size: 1.02rem; line-height: 1.55; }
   .summary p + p { margin-top: .5rem; }
   .profile-links { gap: .4rem 1.6rem; margin-top: 1rem; font-size: .95rem; }
   .profile-links .screen-label { display: none; }
@@ -574,18 +567,18 @@ a:focus-visible, summary:focus-visible {
   .org { font-size: 1.6rem; }
   .org-former { font-size: .9rem; }
   .entry-education .org { font-size: 1.35rem; }
-  .org-about { margin-top: .2rem; font-size: 1.05rem; }
+  .org-about { margin-top: .2rem; font-size: .92rem; }
   .entry-side .dates { margin-top: .5rem; }
   .entry-links { margin-top: .5rem; }
   .entry-links li + li { margin-top: .15rem; }
   .role-name { font-size: 1.35rem; }
   .entry-education .role-name { font-size: 1.2rem; }
-  .role-context { margin-top: .3rem; font-size: 1.05rem; }
+  .role-context { margin-top: .3rem; font-size: .95rem; }
   .bullets { margin-top: .5rem; }
   .bullets li { line-height: 1.5; }
   .bullets li + li { margin-top: .2rem; }
 
-  .project-lede { font-size: 1.15rem; }
+  .project-lede { font-size: 1.05rem; }
 
   /* Each skill group on one line, in two columns */
   .skill-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .45rem 2rem; }
