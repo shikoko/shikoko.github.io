@@ -24,8 +24,9 @@
   color-scheme: light;
 }
 
+/* Dark: follows the system setting unless the theme button chose otherwise. */
 @media (prefers-color-scheme: dark) {
-  :root {
+  :root:not([data-theme="light"]) {
     --paper: #1a1916;
     --paper-veil: rgba(26, 25, 22, .92);
     --ink: #ece8df;
@@ -36,6 +37,18 @@
     --accent-soft: rgba(178, 192, 143, .12);
     color-scheme: dark;
   }
+}
+
+:root[data-theme="dark"] {
+  --paper: #1a1916;
+  --paper-veil: rgba(26, 25, 22, .92);
+  --ink: #ece8df;
+  --ink-2: #cfcac0;
+  --muted: #a29d92;
+  --line: #33312c;
+  --accent: #b2c08f;
+  --accent-soft: rgba(178, 192, 143, .12);
+  color-scheme: dark;
 }
 
 /* ---------- Base ---------- */
@@ -155,6 +168,31 @@ a:focus-visible, summary:focus-visible {
 .nav a:hover { color: var(--ink); }
 .nav a.is-current { color: var(--ink); border-bottom-color: var(--accent); }
 
+.theme-toggle {
+  display: inline-grid;
+  place-items: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  margin-right: -.6rem;
+  padding: 0;
+  color: var(--ink-2);
+  background: none;
+  border: 0;
+  border-radius: 50%;
+  cursor: pointer;
+}
+.theme-toggle[hidden] { display: none; }
+.theme-toggle:hover { color: var(--accent); }
+.theme-toggle:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
+.theme-toggle .icon { grid-area: 1 / 1; font-size: 1.1rem; }
+.theme-toggle .icon-sun { display: none; }
+:root[data-theme="dark"] .theme-toggle .icon-sun { display: block; }
+:root[data-theme="dark"] .theme-toggle .icon-moon { display: none; }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .theme-toggle .icon-sun { display: block; }
+  :root:not([data-theme="light"]) .theme-toggle .icon-moon { display: none; }
+}
+
 .cv-button {
   display: inline-flex;
   align-items: center;
@@ -222,6 +260,12 @@ a:focus-visible, summary:focus-visible {
   font-size: .92rem;
   font-weight: 500;
 }
+.profile-links li {
+  display: flex;
+  align-items: center;
+  min-height: 1.5rem;
+  line-height: 1.2;
+}
 .profile-links a {
   display: inline-flex;
   align-items: center;
@@ -269,6 +313,14 @@ a:focus-visible, summary:focus-visible {
   color: var(--ink);
 }
 .entry-education .org { font-size: 1.55rem; }
+.org-former {
+  margin-left: .35rem;
+  font-family: var(--sans);
+  font-size: .85rem;
+  letter-spacing: 0;
+  color: var(--muted);
+  white-space: nowrap;
+}
 
 .org-about {
   margin-top: .4rem;
@@ -479,7 +531,7 @@ a:focus-visible, summary:focus-visible {
 }
 
 @media print {
-  :root {
+  :root, :root[data-theme="dark"], :root:not([data-theme="light"]) {
     --paper: #ffffff;
     --ink: #161614;
     --ink-2: #353430;
@@ -498,7 +550,7 @@ a:focus-visible, summary:focus-visible {
     print-color-adjust: exact;
   }
 
-  .site-header, .skip-link, .contact { display: none !important; }
+  .site-header, .skip-link, .contact, .theme-toggle { display: none !important; }
   .wrap { max-width: none; padding: 0; }
 
   .intro { padding: 0 0 1.3rem; }
@@ -517,6 +569,7 @@ a:focus-visible, summary:focus-visible {
   .entries > .entry + .entry { margin-top: 1.5rem; }
   .entry-main > .role + .role { margin-top: 1.1rem; }
   .org { font-size: 1.6rem; }
+  .org-former { font-size: .9rem; }
   .entry-education .org { font-size: 1.35rem; }
   .org-about { margin-top: .2rem; font-size: 1.05rem; }
   .entry-side .dates { margin-top: .5rem; }
