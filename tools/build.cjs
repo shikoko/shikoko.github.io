@@ -13,7 +13,7 @@ const path = require("path");
 const root = path.resolve(__dirname, "..");
 const out = path.join(root, "build");
 const site = path.join(out, "site");
-const pdfPages = 2;
+const maxPdfPages = 3;
 
 const fileUrl = (file) => "file://" + path.join(root, file);
 
@@ -22,9 +22,12 @@ async function open(browser, file, viewport) {
   await page.goto(fileUrl(file), { waitUntil: "networkidle" });
   await page.evaluate(() => document.fonts.ready);
   // The fonts come from Google Fonts. Without them the PDF and the card
-  // would quietly use fallback fonts, so stop instead.
+  // would quietly use fallback fonts, so stop instead. Each is checked at a
+  // weight the page uses.
   const missing = await page.evaluate(() =>
-    ["Inter", "JetBrains Mono"].filter((family) => !document.fonts.check(`16px "${family}"`))
+    [["Google Sans", "400"], ["JetBrains Mono", "400"]]
+      .filter(([family, weight]) => !document.fonts.check(`${weight} 16px "${family}"`))
+      .map(([family]) => family)
   );
   if (missing.length) throw new Error(`${file}: ${missing.join(" and ")} didn't load.`);
   return page;
@@ -36,6 +39,7 @@ async function main() {
   fs.copyFileSync(path.join(root, "index.html"), path.join(site, "index.html"));
   fs.cpSync(path.join(root, "assets"), path.join(site, "assets"), { recursive: true });
 
+  let pdfPagesBuilt = 0;
   const browser = await chromium.launch();
   try {
     const cv = await open(browser, "index.html");
@@ -46,9 +50,10 @@ async function main() {
       printBackground: true,
     });
     const pages = (pdf.toString("latin1").match(/\/Type\s*\/Page(?![A-Za-z])/g) || []).length;
-    if (pages !== pdfPages) {
-      throw new Error(`The PDF has ${pages} pages instead of ${pdfPages}: shorten the content or tighten the print styles.`);
+    if (pages > maxPdfPages) {
+      throw new Error(`The PDF has ${pages} pages, more than ${maxPdfPages}: shorten the content or tighten the print styles.`);
     }
+    pdfPagesBuilt = pages;
 
     const cards = [
       { width: 1200, height: 630, file: path.join(site, "assets", "social-preview.png") },
@@ -67,7 +72,7 @@ async function main() {
     const size = fs.statSync(path.join(out, file)).size;
     console.log(`build/${file}  ${Math.ceil(size / 1024)} KB`);
   }
-  console.log(`The PDF has ${pdfPages} pages.`);
+  console.log(`The PDF has ${pdfPagesBuilt} pages.`);
 }
 
 main().catch((error) => {

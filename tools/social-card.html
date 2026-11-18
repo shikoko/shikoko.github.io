@@ -2,85 +2,57 @@
 <!-- Social preview card: the source of assets/social-preview.png on the site.
      Rendered at 1200x630 for the page's og:image, and at 1280x640 for
      the repository's social preview on GitHub. tools/build.cjs renders both.
-     Keep the headline and the roles in step with index.html. -->
+     Keep the title and the roles in step with index.html. -->
 <html lang="en-GB">
 <head>
 <meta charset="UTF-8">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;650;750&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<title>Social preview card</title>
+<link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
   * { box-sizing: border-box; margin: 0; padding: 0; }
   html, body { width: 100vw; height: 100vh; overflow: hidden; }
   body {
-    position: relative;
     display: grid;
-    grid-template-columns: 1fr 430px;
-    gap: 64px;
-    padding: 80px 88px 72px;
-    background: #14171a;
-    color: #bcc1c9;
-    font-family: "Inter", sans-serif;
-    font-feature-settings: "cv11", "ss01";
+    grid-template-columns: 1fr 420px;
+    gap: 72px;
+    padding: 84px 88px 76px;
+    background: #f8f6f0;
+    color: #3b3a36;
+    font-family: "Google Sans", sans-serif;
     -webkit-font-smoothing: antialiased;
   }
-  /* Dots fading in from the right edge */
-  body::after {
-    content: "";
-    position: absolute;
-    right: -40px;
-    top: -40px;
-    width: 560px;
-    height: calc(100% + 80px);
-    background-image: radial-gradient(rgba(61, 220, 132, .2) 2.5px, transparent 3px);
-    background-size: 34px 34px;
-    -webkit-mask-image: linear-gradient(to left, #000 10%, transparent 85%);
-    mask-image: linear-gradient(to left, #000 10%, transparent 85%);
-  }
-  .left, .right { position: relative; z-index: 1; }
-  .left { display: flex; flex-direction: column; }
   .mono { font-family: "JetBrains Mono", monospace; }
-  .icon { width: 1em; height: 1em; flex: none; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+  .left { display: flex; flex-direction: column; }
+  .left::before { content: ""; width: 52px; height: 4px; margin-bottom: 34px; background: #2b4a6f; }
+  .name { font-size: 96px; font-weight: 500; line-height: 1; letter-spacing: -.035em; color: #1d1d1b; }
+  .title { margin-top: 18px; font-size: 38px; letter-spacing: -.01em; color: #2b4a6f; }
+  .platforms { margin-top: 14px; font-size: 24px; color: #69655c; }
+  .site { margin-top: auto; font-size: 19px; letter-spacing: .06em; color: #69655c; }
 
-  .eyebrow { display: inline-flex; align-items: center; gap: 14px; margin-bottom: 28px; font-family: "JetBrains Mono", monospace; font-size: 20px; font-weight: 500; letter-spacing: .08em; text-transform: uppercase; color: #3ddc84; }
-  .eyebrow::before { content: ""; width: 40px; height: 3px; border-radius: 2px; background: currentColor; }
-  .name { font-size: 92px; font-weight: 750; line-height: 1.02; letter-spacing: -.03em; color: #e9ebee; }
-  .headline { margin-top: 22px; font-size: 34px; font-weight: 500; line-height: 1.3; }
-  .headline .platforms { color: #3ddc84; }
-  .meta { margin-top: auto; display: flex; flex-direction: column; gap: 12px; font-size: 22px; }
-  .meta span { display: inline-flex; align-items: center; gap: 12px; }
-  .meta .icon { color: #3ddc84; }
-
-  .title { display: flex; align-items: center; gap: 16px; margin: 12px 0 30px; font-size: 17px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: #8d939c; }
-  .title::after { content: ""; flex: 1; height: 1.5px; background: #262a2f; }
-  .jobs { position: relative; list-style: none; }
-  .jobs::before { content: ""; position: absolute; left: 6px; top: 14px; bottom: 14px; width: 2px; background: #262a2f; }
-  .jobs li { position: relative; padding-left: 38px; }
+  .right { padding-left: 44px; border-left: 1.5px solid #e2ddd1; }
+  .label { margin-top: 8px; font-size: 16px; font-weight: 500; letter-spacing: .14em; text-transform: uppercase; color: #2b4a6f; }
+  .jobs { list-style: none; margin-top: 34px; }
   .jobs li + li { margin-top: 26px; }
-  .jobs li::before { content: ""; position: absolute; left: 0; top: 9px; width: 10px; height: 10px; border-radius: 50%; background: #14171a; border: 2.5px solid #3ddc84; }
-  .jobs li:first-child::before { background: #3ddc84; }
-  .role { font-size: 25px; font-weight: 650; letter-spacing: -.01em; color: #e9ebee; }
-  .org { margin-top: 3px; display: flex; justify-content: space-between; font-size: 20px; }
-  .org b { font-weight: 600; color: #3ddc84; }
-  .org .mono { font-size: 17px; color: #8d939c; }
-  .jobs li.more .role { font-size: 21px; font-weight: 500; color: #8d939c; }
+  .org { font-size: 30px; font-weight: 600; line-height: 1.1; letter-spacing: -.02em; color: #1d1d1b; }
+  .role { margin-top: 4px; display: flex; justify-content: space-between; gap: 16px; font-size: 19px; }
+  .role .years { font-size: 17px; color: #69655c; white-space: nowrap; align-self: center; }
+  .more { font-size: 19px; color: #69655c; }
 </style>
 </head>
 <body>
   <div class="left">
-    <p class="eyebrow">Curriculum vitae</p>
     <h1 class="name">Bogdan<br>Roatis</h1>
-    <p class="headline">Lead Mobile Engineer<br><span class="platforms">Android &amp; iOS</span></p>
-    <div class="meta">
-      <span><svg class="icon" viewBox="0 0 24 24"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>London, UK</span>
-      <span><svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>shikoko.github.io</span>
-    </div>
+    <p class="title">Senior Mobile Engineer</p>
+    <p class="platforms">Android &amp; iOS · London, UK</p>
+    <p class="site mono">shikoko.github.io</p>
   </div>
   <div class="right">
-    <p class="title mono">Experience</p>
+    <p class="label mono">Experience</p>
     <ol class="jobs">
-      <li><p class="role">Mobile Lead</p><p class="org"><span><b>STEM</b> · 3 roles</span><span class="mono">2022 – 2026</span></p></li>
-      <li><p class="role">Mobile Team Lead</p><p class="org"><b>SKOOT</b><span class="mono">2021 – 2022</span></p></li>
-      <li><p class="role">Senior Android Developer</p><p class="org"><b>Peak</b><span class="mono">2020</span></p></li>
-      <li class="more"><p class="role">4 earlier Android roles since 2013</p></li>
+      <li><p class="org">STEM</p><p class="role"><span>Mobile Lead · 3 roles</span><span class="years">2022 – 2026</span></p></li>
+      <li><p class="org">SKOOT</p><p class="role"><span>Mobile Team Lead</span><span class="years">2021 – 2022</span></p></li>
+      <li><p class="org">Peak</p><p class="role"><span>Senior Android Developer</span><span class="years">2020</span></p></li>
+      <li><p class="more">4 earlier Android roles since 2013</p></li>
     </ol>
   </div>
 </body>

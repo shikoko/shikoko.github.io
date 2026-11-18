@@ -4,11 +4,11 @@ Bogdan Roatis's CV, published at **https://shikoko.github.io/**, with a [PDF ver
 
 ## How it's made
 
-The CV is one hand-written page, [`index.html`](index.html) with [`assets/css/resume.css`](assets/css/resume.css): light and dark themes on screen, and an A4 print stylesheet for the PDF. There's no framework or site generator.
+The CV is one hand-written page, [`index.html`](index.html) with [`assets/css/resume.css`](assets/css/resume.css): a scrolling, editorial layout with light and dark themes on screen, and an A4 print stylesheet for the PDF. There's no framework or site generator.
 
 `npm run build` ([`tools/build.cjs`](tools/build.cjs)) builds the site into `build/site/`. It copies the page and renders two files from it with Chromium, through Playwright:
 
-- `Bogdan-Roatis-CV.pdf`, the copy the **Download PDF** button saves. The build fails if it isn't two A4 pages.
+- `Bogdan-Roatis-CV.pdf`, the copy the **CV** download button saves. The build fails if it's longer than three A4 pages.
 - `assets/social-preview.png`, the picture shown when the link is shared, from [`tools/social-card.html`](tools/social-card.html).
 
 The [Deploy workflow](.github/workflows/deploy.yml) runs the build for every pull request into `main`, and publishes every push to `main` with GitHub Pages.

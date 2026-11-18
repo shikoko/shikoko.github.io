@@ -3,8 +3,8 @@ name: Deploy
 # Builds the site with `npm run build` (the page, plus the PDF and the social
 # preview image rendered from it with Chromium) for every pull request into
 # main and every push to main, and publishes the pushes with GitHub Pages.
-# The build fails if the PDF isn't two pages, so a pull request that pushes
-# it to three can't be merged unnoticed.
+# The build fails if the PDF is longer than three pages, so a pull request
+# that pushes it to four can't be merged unnoticed.
 on:
   push:
     branches: [main]
