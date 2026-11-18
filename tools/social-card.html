@@ -7,7 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Social preview card</title>
-<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,600&family=Google+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
   * { box-sizing: border-box; margin: 0; padding: 0; }
   html, body { width: 100vw; height: 100vh; overflow: hidden; }
@@ -21,7 +21,6 @@
     font-family: "Google Sans", sans-serif;
     -webkit-font-smoothing: antialiased;
   }
-  .serif { font-family: "Newsreader", Georgia, serif; }
   .mono { font-family: "JetBrains Mono", monospace; }
   .left { display: flex; flex-direction: column; }
   .left::before { content: ""; width: 52px; height: 4px; margin-bottom: 34px; background: #2b4a6f; }
@@ -34,7 +33,7 @@
   .label { margin-top: 8px; font-size: 16px; font-weight: 500; letter-spacing: .14em; text-transform: uppercase; color: #2b4a6f; }
   .jobs { list-style: none; margin-top: 34px; }
   .jobs li + li { margin-top: 26px; }
-  .org { font-size: 31px; font-weight: 600; line-height: 1.1; color: #1d1d1b; }
+  .org { font-size: 30px; font-weight: 600; line-height: 1.1; letter-spacing: -.02em; color: #1d1d1b; }
   .role { margin-top: 4px; display: flex; justify-content: space-between; gap: 16px; font-size: 19px; }
   .role .mono { font-size: 15px; letter-spacing: .06em; color: #69655c; white-space: nowrap; align-self: center; }
   .more { font-size: 19px; color: #69655c; }
@@ -50,9 +49,9 @@
   <div class="right">
     <p class="label mono">Experience</p>
     <ol class="jobs">
-      <li><p class="org serif">STEM</p><p class="role"><span>Mobile Lead · 3 roles</span><span class="mono">2022 – 2026</span></p></li>
-      <li><p class="org serif">SKOOT</p><p class="role"><span>Mobile Team Lead</span><span class="mono">2021 – 2022</span></p></li>
-      <li><p class="org serif">Peak</p><p class="role"><span>Senior Android Developer</span><span class="mono">2020</span></p></li>
+      <li><p class="org">STEM</p><p class="role"><span>Mobile Lead · 3 roles</span><span class="mono">2022 – 2026</span></p></li>
+      <li><p class="org">SKOOT</p><p class="role"><span>Mobile Team Lead</span><span class="mono">2021 – 2022</span></p></li>
+      <li><p class="org">Peak</p><p class="role"><span>Senior Android Developer</span><span class="mono">2020</span></p></li>
       <li><p class="more">4 earlier Android roles since 2013</p></li>
     </ol>
   </div>

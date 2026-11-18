@@ -23,9 +23,9 @@ async function open(browser, file, viewport) {
   await page.evaluate(() => document.fonts.ready);
   // The fonts come from Google Fonts. Without them the PDF and the card
   // would quietly use fallback fonts, so stop instead. Each is checked at a
-  // weight the page uses: the serif only appears in semibold headings.
+  // weight the page uses.
   const missing = await page.evaluate(() =>
-    [["Newsreader", "600"], ["Google Sans", "400"], ["JetBrains Mono", "400"]]
+    [["Google Sans", "400"], ["JetBrains Mono", "400"]]
       .filter(([family, weight]) => !document.fonts.check(`${weight} 16px "${family}"`))
       .map(([family]) => family)
   );
