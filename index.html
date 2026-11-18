@@ -384,19 +384,24 @@
       toggle.hidden = false;
       showTheme();
 
-      // Underline the navigation link of the section being read.
-      if (!("IntersectionObserver" in window)) return;
+      // Underline the navigation link of the section being read: the last section whose top has
+      // passed a line 35% down the window, or the last section once the page can't scroll further.
+      // The introduction and Education have no link, so nothing is underlined while they're read.
       var links = {};
       document.querySelectorAll(".nav a").forEach(function (a) { links[a.hash.slice(1)] = a; });
-      var observer = new IntersectionObserver(function (items) {
-        items.forEach(function (item) {
-          var link = links[item.target.id];
-          if (link && item.isIntersecting) {
-            Object.keys(links).forEach(function (id) { links[id].classList.toggle("is-current", links[id] === link); });
-          }
-        });
-      }, { rootMargin: "-35% 0px -60% 0px" });
-      Object.keys(links).forEach(function (id) { var s = document.getElementById(id); if (s) observer.observe(s); });
+      var sections = document.querySelectorAll("main > section[id]");
+      var pending = false;
+      function markCurrent() {
+        pending = false;
+        var line = innerHeight * 0.35, current = null;
+        sections.forEach(function (s) { if (s.getBoundingClientRect().top <= line) current = s; });
+        if (innerHeight + scrollY >= document.documentElement.scrollHeight - 2) current = sections[sections.length - 1];
+        Object.keys(links).forEach(function (id) { links[id].classList.toggle("is-current", !!current && current.id === id); });
+      }
+      function schedule() { if (!pending) { pending = true; requestAnimationFrame(markCurrent); } }
+      addEventListener("scroll", schedule, { passive: true });
+      addEventListener("resize", schedule);
+      markCurrent();
     })();
   </script>
 </body>
