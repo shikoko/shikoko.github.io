@@ -578,7 +578,7 @@ a:focus-visible, summary:focus-visible {
   .entry-education .role-name { font-size: 1.2rem; }
   .role-context { margin-top: .3rem; font-size: .95rem; }
   .bullets { margin-top: .5rem; }
-  .bullets li { line-height: 1.5; }
+  .bullets li { line-height: 1.45; }
   .bullets li + li { margin-top: .2rem; }
 
   .project-lede { font-size: 1.05rem; }

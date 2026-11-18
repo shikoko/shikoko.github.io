@@ -28,7 +28,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Google+Sans:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/resume.css?v=19">
+  <link rel="stylesheet" href="assets/css/resume.css?v=20">
 </head>
 
 <body>
@@ -65,8 +65,7 @@
       <h1 class="name" id="name">Bogdan Roatis</h1>
       <p class="role-title">Senior Mobile Engineer</p>
       <div class="summary">
-        <p>Senior Mobile Engineer with 13+ years of experience in software engineering, specialising in native mobile development across Android and iOS. Passionate about building well-engineered products, solving complex technical challenges and taking applications from initial concept through production release. Experienced in application architecture, technical decision-making and navigating complex, unfamiliar and legacy codebases, with a strong preference for hands-on engineering and continuous improvement.</p>
-        <p>Most recently led mobile development at STEM, building and shipping stem player, a music creation app for iOS, while overseeing architecture, code quality, CI/CD and release management. Also experienced in bringing AI-assisted development into everyday engineering practice.</p>
+        <p>Senior Mobile Engineer with 13+ years of experience in software engineering, specialising in native mobile development across Android and iOS. Passionate about building well-engineered products, solving complex technical challenges and taking applications from initial concept through production release. Experienced in application architecture, platform-level development and navigating complex, unfamiliar and legacy codebases, with a strong preference for hands-on engineering and continuous improvement.</p>
       </div>
       <ul class="profile-links">
         <li><a href="https://github.com/shikoko"><svg class="icon icon-fill" aria-hidden="true"><use href="#i-github"/></svg><span class="screen-label">GitHub</span><span class="print-label">github.com/shikoko</span></a></li>
@@ -97,13 +96,14 @@
               </div>
               <p class="role-context">stem player: a music creation app for iOS for splitting songs into stems, manipulating the audio and making remixes.</p>
               <ul class="bullets">
-                <li>Built the stem player iOS app from the ground up in SwiftUI, taking it from initial development through App Store release.</li>
-                <li>Owned the app's architecture and technical direction as its primary code owner: reviewed every contributor's work, merged all changes, oversaw integrations and code quality, and shipped each new version.</li>
-                <li>Developed complex audio playback and manipulation features, including multi-stem playback and real-time audio controls, working extensively with AVFoundation.</li>
-                <li>Set up CI/CD for PR checks, TestFlight distribution and App Store releases on Azure Pipelines, then migrated it to GitHub Actions and Fastlane.</li>
-                <li>Migrated the test suite from XCTest to Swift Testing.</li>
-                <li>Built an AI-assisted interface, added later in the product's life, that simplifies the creative process.</li>
-                <li>Adopted AI-assisted development with Claude Code, Cursor and Codex while keeping ownership of the architecture: tested and reviewed every generated change, and added an automated AI review step to each pull request.</li>
+                <li>Built the stem player iOS application from the ground up using SwiftUI, taking it from initial development through App Store release.</li>
+                <li>Owned the application's architecture and technical direction as its primary code owner, maintaining responsibility for code quality, integrations and production releases.</li>
+                <li>Engineered complex audio playback and manipulation systems, including synchronised multi-stem playback, audio streaming, buffering, real-time pitch and playback controls using AVFoundation.</li>
+                <li>Maintained a weekly release cadence, overseeing testing, integration and delivery of new versions to the App Store.</li>
+                <li>Established CI/CD pipelines for automated PR checks, TestFlight distribution and App Store releases, initially using Azure Pipelines and subsequently migrating to GitHub Actions and Fastlane.</li>
+                <li>Migrated the application's test suite from XCTest to Swift Testing.</li>
+                <li>Developed an AI-assisted interface, introduced later in the product's lifecycle, to simplify music creation workflows.</li>
+                <li>Incorporated AI-assisted engineering workflows using Claude Code, Cursor and Codex, maintaining architectural ownership and validating generated changes. Introduced automated AI-assisted PR reviews.</li>
               </ul>
             </article>
             <article class="role">
@@ -113,7 +113,8 @@
               </div>
               <p class="role-context">Stem Projector: a palm-sized video projector with a haptic touch ring.</p>
               <ul class="bullets">
-                <li>Moved from contract to full-time and took the lead on the Stem Projector's Android apps and their shared libraries.</li>
+                <li>Owned the architecture and technical direction of the Stem Projector's Android applications and shared libraries.</li>
+                <li>Led their continued development and integration, ensuring a cohesive software experience across the device ecosystem.</li>
               </ul>
             </article>
             <article class="role">
@@ -122,8 +123,9 @@
                 <p class="dates">Jul 2022 – Dec 2022 · Contract</p>
               </div>
               <ul class="bullets">
-                <li>Built the Stem Projector's launcher, settings and movie apps in Kotlin around STEM's design principles, as one device-wide experience.</li>
-                <li>Created the shared Kotlin libraries beneath them: device state, haptics, motion sensing, sounds and core UI.</li>
+                <li>Developed the Stem Projector's launcher, settings and movie applications in Kotlin, delivering a cohesive software experience across the device.</li>
+                <li>Designed and built a shared ecosystem of modular Kotlin libraries covering device state management, haptics, motion sensing, audio and core UI, providing reusable foundations across multiple independently built applications.</li>
+                <li>Established the underlying architecture and module structure of the shared libraries, enabling individual applications to maintain their own modular architecture while leveraging common functionality.</li>
               </ul>
             </article>
           </div>
@@ -143,11 +145,11 @@
                 <h4 class="role-name">Mobile Team Lead</h4>
               </div>
               <ul class="bullets">
-                <li>Led and mentored a four-engineer mobile team across Android and iOS.</li>
-                <li>Designed and implemented the Android app's entire design system in Jetpack Compose.</li>
-                <li>Restructured the Android app's architecture and modules, refactored legacy code and enforced idiomatic Kotlin.</li>
-                <li>Established engineering practices, an architecture template and technical documentation as a reference for future development.</li>
-                <li>Delegated tasks within the team; found, logged and fixed bugs on Android and iOS.</li>
+                <li>Led a four-engineer mobile team responsible for the Android and iOS applications, coordinating technical delivery across both platforms.</li>
+                <li>Designed and implemented the Android application's design system from the ground up using Jetpack Compose.</li>
+                <li>Reworked the application's modular architecture, restructuring existing modules, refactoring legacy code and establishing clearer separation of concerns using idiomatic Kotlin.</li>
+                <li>Established engineering standards, an architecture template and technical documentation to guide future development.</li>
+                <li>Coordinated team delivery, prioritised technical work and investigated and resolved issues across Android and iOS.</li>
               </ul>
             </article>
           </div>
@@ -170,10 +172,10 @@
               </div>
               <p class="role-context">One of four developers in Peak's Android team.</p>
               <ul class="bullets">
-                <li>Wrote Architecture Decision Records (ADRs) and an architecture template.</li>
-                <li>Contributed to a design system initiative documenting all UI components, typography and colours.</li>
-                <li>Helped designers understand Android UX/UI conventions, which led to changes in some design specs.</li>
-                <li>Reworked the module structure and legacy code, and enforced idiomatic Kotlin.</li>
+                <li>Contributed to architectural improvements, documenting key decisions through Architecture Decision Records (ADRs) and establishing a reusable architecture template.</li>
+                <li>Helped define the Android design system, documenting UI components, typography and colour conventions.</li>
+                <li>Collaborated with designers to align product designs with Android UX/UI conventions, influencing changes to design specifications.</li>
+                <li>Restructured the Android application's module architecture, improving code organisation and maintainability while modernising legacy implementations.</li>
               </ul>
             </article>
           </div>
@@ -196,10 +198,10 @@
               </div>
               <p class="role-context">One of three Android developers in the multi-platform team that owned user rewards.</p>
               <ul class="bullets">
-                <li>Added rewards features, including a better way to spend accumulated points and a way for users to see what they were missing out on.</li>
-                <li>Proposed and implemented UX/UI solutions; advised the designer on Android conventions, prompting changes to some design specs.</li>
-                <li>Worked closely with engineers on every platform in the team to better organise upcoming features and the current UX.</li>
-                <li>Refactored existing and newly written code, and fixed bugs.</li>
+                <li>Developed features for the rewards experience, improving how users could redeem accumulated points and discover available rewards.</li>
+                <li>Proposed and implemented UX/UI solutions while advising designers on Android platform conventions.</li>
+                <li>Collaborated with engineers across platforms to coordinate feature development and maintain a consistent user experience.</li>
+                <li>Refactored existing and newly developed code, resolving bugs and improving maintainability.</li>
               </ul>
             </article>
           </div>
@@ -222,11 +224,11 @@
               <div class="role-head">
                 <h4 class="role-name">Senior Android Developer</h4>
               </div>
-              <p class="role-context">Sole developer on Alfresco's Android platform.</p>
               <ul class="bullets">
-                <li>Owned development and maintenance of Alfresco's open-source Android apps, and released new versions on Google Play.</li>
-                <li>Added features, including SAML support in the Android document provider.</li>
-                <li>Devised and implemented solutions to UX issues, and fixed bugs.</li>
+                <li>Sole developer responsible for the development and maintenance of Alfresco's open-source Android applications.</li>
+                <li>Implemented new functionality, including SAML authentication support for the Android document provider.</li>
+                <li>Managed application releases and maintenance, publishing updates to Google Play.</li>
+                <li>Investigated and resolved UX and technical issues across the applications.</li>
               </ul>
             </article>
           </div>
@@ -249,8 +251,8 @@
               </div>
               <p class="role-context">Part of a small VOX team.</p>
               <ul class="bullets">
-                <li>Integrated the Android Camera2 API into Veridium's apps.</li>
-                <li>Worked on Veridium's SDK, which bunq integrated into its Android banking app.</li>
+                <li>Integrated Android's Camera2 API into Veridium's biometric authentication applications.</li>
+                <li>Contributed to Veridium's Android SDK and integrated it into Android applications, including its subsequent adoption by bunq's mobile banking application.</li>
               </ul>
             </article>
           </div>
@@ -272,10 +274,11 @@
               <div class="role-head">
                 <h4 class="role-name">Android Developer</h4>
               </div>
-              <p class="role-context">Career start; worked on many Android projects in teams of 2 to 80 people.</p>
               <ul class="bullets">
-                <li>Contributed to Text Free (free calls and texts with a real US number), Sideline (a second phone line for small businesses and freelancers) and a deals app giving access to a large number of sales.</li>
-                <li>Built apps from scratch, solved business and UX/UI problems in code, and co-wrote functional and technical design documents.</li>
+                <li>Contributed to multiple Android applications, including Text Free, Sideline and a retail deals platform.</li>
+                <li>Built applications from the ground up, translating business requirements and UX/UI designs into working software.</li>
+                <li>Collaborated on functional and technical design documentation, helping define application behaviour and implementation approaches.</li>
+                <li>Worked across projects of varying sizes, collaborating with engineering teams ranging from small groups to large development organisations.</li>
               </ul>
             </article>
           </div>
@@ -298,9 +301,9 @@
         <div class="entry-main">
           <p class="project-lede">An open-source desktop Git client for macOS, Windows and Linux, designed to make Git workflows more approachable and accessible to everyone.</p>
           <ul class="bullets">
-            <li>Designed and developed it from the ground up, in Rust with Tauri and in React with TypeScript.</li>
+            <li>Designed and developed the application from the ground up using Rust, Tauri and React with TypeScript.</li>
             <li>Focused on making everyday Git operations more approachable through an intuitive interface.</li>
-            <li>Independently handled architecture, implementation, product design and development, with AI-assisted development in Claude Code.</li>
+            <li>Independently handled architecture, implementation and product design.</li>
           </ul>
         </div>
       </div>
@@ -311,11 +314,11 @@
       <div class="skill-grid">
         <div class="skill-group"><h3>Android</h3><ul><li>Kotlin</li><li>Java</li><li>Jetpack Compose</li><li>Android SDK</li><li>Coroutines</li><li>Hilt</li></ul></div>
         <div class="skill-group"><h3>iOS</h3><ul><li>Swift</li><li>SwiftUI</li><li>Combine</li><li>Swift Concurrency</li><li>AVFoundation</li></ul></div>
-        <div class="skill-group"><h3>Architecture</h3><ul><li>Clean Architecture</li><li>MVVM</li><li>Modularisation</li><li>Design Systems</li></ul></div>
+        <div class="skill-group"><h3>Architecture &amp; Engineering</h3><ul><li>Clean Architecture</li><li>Modular Architecture</li><li>Multi-module Applications</li><li>Shared Library Design</li><li>MVVM</li><li>Design Systems</li><li>Legacy Code Modernisation</li><li>Platform Architecture</li></ul></div>
         <div class="skill-group"><h3>Data &amp; Networking</h3><ul><li>GraphQL</li><li>REST APIs</li><li>Core Data</li><li>SQLite</li></ul></div>
         <div class="skill-group"><h3>CI/CD &amp; Automation</h3><ul><li>GitHub Actions</li><li>Fastlane</li><li>Azure Pipelines</li><li>App Store Connect</li><li>TestFlight</li></ul></div>
         <div class="skill-group"><h3>Testing</h3><ul><li>Swift Testing</li><li>XCTest</li><li>JUnit</li><li>Turbine</li><li>MockWebServer</li><li>Compose UI Testing</li><li>Espresso</li><li>Unit Testing</li></ul></div>
-        <div class="skill-group"><h3>Technical Leadership</h3><ul><li>Technical Architecture</li><li>Code Reviews</li><li>Mentoring</li><li>Engineering Standards</li><li>Technical Documentation</li><li>Team Leadership</li></ul></div>
+        <div class="skill-group"><h3>Technical Leadership</h3><ul><li>Technical Architecture</li><li>Code Reviews</li><li>Engineering Standards</li><li>Technical Documentation</li><li>Technical Decision-making</li><li>Team Leadership</li></ul></div>
         <div class="skill-group"><h3>AI-assisted Development</h3><ul><li>Claude Code</li><li>Cursor</li><li>Codex</li></ul></div>
       </div>
     </section>
