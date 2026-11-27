@@ -177,9 +177,11 @@
   background: var(--accent-soft);
   font-size: .78rem;
   font-weight: 600;
-  letter-spacing: -.01em;
   color: var(--ink-2);
 }
+/* The letters are trimmed to their capitals, so the tile centres the letters
+   themselves rather than the font's taller line. */
+.app-icon.tile > span { line-height: 1; text-box: trim-both cap alphabetic; }
 .app-icon.pair img + img { margin-left: -1.1rem; box-shadow: 0 0 0 2px var(--paper); }
 .app-name { font-weight: 600; color: var(--ink); white-space: nowrap; }
 a.app-name:hover { color: var(--accent); }
