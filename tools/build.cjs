@@ -23,13 +23,15 @@ async function open(browser, file, viewport) {
   await page.goto(fileUrl(file), { waitUntil: "networkidle" });
   await page.evaluate(() => document.fonts.ready);
   // The fonts come from Google Fonts. Without them the PDF and the card
-  // would quietly use fallback fonts, so stop instead. Each is checked at a
-  // weight the page uses.
-  const missing = await page.evaluate(() =>
-    [["Google Sans", "400"], ["JetBrains Mono", "400"]]
+  // would quietly use fallback fonts, so stop instead. Each is asked for
+  // first, since a page only downloads the weights it draws text in.
+  const missing = await page.evaluate(async () => {
+    const fonts = [["Google Sans", "400"], ["JetBrains Mono", "400"]];
+    await Promise.all(fonts.map(([family, weight]) => document.fonts.load(`${weight} 16px "${family}"`).catch(() => [])));
+    return fonts
       .filter(([family, weight]) => !document.fonts.check(`${weight} 16px "${family}"`))
-      .map(([family]) => family)
-  );
+      .map(([family]) => family);
+  });
   if (missing.length) throw new Error(`${file}: ${missing.join(" and ")} didn't load.`);
   return page;
 }
