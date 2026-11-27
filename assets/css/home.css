@@ -212,28 +212,15 @@ a.app-name:hover { color: var(--accent); }
 .app-what { min-width: 0; font-size: .95rem; color: var(--muted); }
 .app-when { font-size: .86rem; color: var(--muted); font-variant-numeric: tabular-nums; white-space: nowrap; }
 
-/* ---------- CV and footer ---------- */
+/* ---------- CV ---------- */
 
-.cv-line { display: flex; flex-wrap: wrap; align-items: baseline; gap: .6rem 1.6rem; }
+/* The page ends here, with the same space below as the CV's last section. */
+.cv-line { display: flex; flex-wrap: wrap; align-items: baseline; gap: .6rem 1.6rem; padding-bottom: 6rem; }
 .cv-line .section-label { margin: 0; }
 .cv-line p { color: var(--muted); }
 .cv-links { display: inline-flex; gap: 1.3rem; }
 .cv-links a { font-weight: 500; }
 
-.home-footer {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  gap: .5rem 1.5rem;
-  margin-top: 4rem;
-  padding-top: 1.4rem;
-  padding-bottom: 2.6rem;
-  font-size: .86rem;
-  color: var(--muted);
-  border-top: 1px solid var(--line);
-}
-.home-footer a { color: var(--muted); text-decoration: none; }
-.home-footer a:hover { color: var(--accent); }
 
 /* ---------- Narrower screens ---------- */
 
