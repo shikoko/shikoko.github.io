@@ -59,13 +59,13 @@ Commits go out under the owner's name and are public, so they get quoted out of 
 
 - **The same facts as the CV.** Descriptions, roles and years on the home page come from the CV or from the owner. When a role or an app changes on the CV, change it here too.
 - **Projects** are shown like the image at the top of their README: the icon, the name and one line on the left, and a crop of the app's window coming in from the right. The crop is a WebP about 960 pixels wide in `assets/work/`.
-- **The STEM apps** each have a short loop: a silent H.264 MP4 of a few hundred KB, with a JPEG still frame from it as its poster. The page plays a loop only while it's on screen, and never with reduced motion, when the still shows instead. Make a loop from a video or GIF with ffmpeg, for example `ffmpeg -i in.mp4 -an -c:v libx264 -crf 25 -pix_fmt yuv420p -movflags +faststart out.mp4`, and set the card's `--media-bg` to the video's background colour so its edges don't show. Originals aren't committed.
+- **The STEM apps** share one black band under STEM's name, and each has a short loop: a silent H.264 MP4 of a few hundred KB, with a JPEG still frame from it as its poster. Each loop fades out at its own edges into the band's black. The page plays a loop only while it's on screen, and never with reduced motion, when the still shows instead. Make a loop from a video or GIF with ffmpeg, for example `ffmpeg -i in.mp4 -an -c:v libx264 -crf 25 -pix_fmt yuv420p -movflags +faststart out.mp4`. Originals aren't committed.
 - **Other apps** are rows with their store icon, a 128-pixel PNG in `assets/work/icons/`. An app with no store listing gets a lettered tile instead.
 - **Links** to the projects use their full addresses, since they aren't files of this site; the build fails if any other link points to a file that isn't there.
 
 ## Design
 
-The CV's design is below. The home page uses the same colours, type, header and section labels, with dark cards for the work: their colours stay the same in both themes, because they carry the apps' own dark screens and videos.
+The CV's design is below. The home page uses the same colours, type, header and section labels, with dark surfaces for the work: the project cards and the STEM band keep their colours in both themes, because they carry the apps' own dark screens and videos.
 
 - **Minimal and editorial:** a cream page, near-black text and one ink-blue accent. Google Sans for everything: the name, headings (semibold for organisation and role names) and all running text, with dates in smaller grey type; JetBrains Mono only for section labels and the contact labels.
 - **Readable greys:** secondary text uses `--muted`, which keeps at least 7:1 contrast (WCAG AAA) in both themes and in print.
