@@ -173,7 +173,10 @@
 }
 .stem-app h4 { font-size: 1.25rem; font-weight: 600; letter-spacing: -.01em; color: var(--card-ink); }
 .stem-app p { font-size: .95rem; line-height: 1.55; }
-.stem-app .stem-meta { font-size: .86rem; color: #9ba3b1; }
+.stem-app .stem-meta, .stem-app .stem-credit { font-size: .86rem; color: #9ba3b1; }
+/* Who filmed each loop: the name a shade lighter than the words around it. */
+.stem-credit a { color: #d6dae2; text-decoration: none; }
+.stem-credit a:hover { text-decoration: underline; text-underline-offset: 3px; }
 .stem-link { justify-self: start; margin-top: .15rem; font-size: .92rem; font-weight: 500; color: var(--card-link); }
 .stem-link:hover { text-decoration: underline; }
 
