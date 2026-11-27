@@ -2,7 +2,7 @@
 // home page, the CV in cv/, their assets, the PDF the Download PDF button
 // saves, and the two pages' social preview images, the last three rendered
 // with Chromium.
-// Also renders the 1280x640 copy of the card for the repository's social
+// Also renders the home page's card at 1280x640 for the repository's social
 // preview on GitHub into build/, outside the site. It stops if a page links
 // to a file of the site that isn't there.
 //
@@ -64,8 +64,8 @@ async function main() {
 
     const cards = [
       { source: "tools/social-card.html", width: 1200, height: 630, file: path.join(site, "assets", "social-preview.png") },
-      { source: "tools/social-card.html", width: 1280, height: 640, file: path.join(out, "github-social-preview.png") },
       { source: "tools/home-card.html", width: 1200, height: 630, file: path.join(site, "assets", "home-preview.png") },
+      { source: "tools/home-card.html", width: 1280, height: 640, file: path.join(out, "github-social-preview.png") },
     ];
     for (const { source, width, height, file } of cards) {
       const card = await open(browser, source, { width, height });
