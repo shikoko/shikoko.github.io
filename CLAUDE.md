@@ -1,6 +1,11 @@
 # Working on shikoko.github.io
 
-This repository is Bogdan Roatis's CV, published at https://shikoko.github.io/. The page is `index.html` with `assets/css/resume.css`. The **Deploy** workflow (`.github/workflows/deploy.yml`) builds the site with `npm run build` on every push to `main` and publishes it with GitHub Pages. The build renders two files from the page with Chromium: `Bogdan-Roatis-CV.pdf`, the copy the Download PDF button saves, and `assets/social-preview.png`, the picture shown when the link is shared. Neither is committed.
+This repository is Bogdan Roatis's site, published at https://shikoko.github.io/. It has two pages:
+
+- **The home page**, `index.html` with `assets/css/home.css` on top of `assets/css/resume.css`: his projects and the apps he's worked on. Its pictures, loops and icons are in `assets/work/`.
+- **The CV**, `cv/index.html` with `assets/css/resume.css`, at https://shikoko.github.io/cv/.
+
+Both share the theme button's script, `assets/js/theme.js`. The **Deploy** workflow (`.github/workflows/deploy.yml`) builds the site with `npm run build` on every push to `main` and publishes it with GitHub Pages. The build renders two files from the CV with Chromium: `Bogdan-Roatis-CV.pdf`, the copy the Download PDF buttons save, and `assets/social-preview.png`, the picture shown when either page is shared. Neither is committed. Tributary (`/tributary/`) and Signature (`/signature/`) are published from their own repositories, so the home page links to them by their full addresses.
 
 ## Branches
 
@@ -44,13 +49,23 @@ Commits go out under the owner's name and are public, so they get quoted out of 
 ## Changing the CV
 
 - **Only facts the owner has confirmed.** Don't add claims, numbers or technologies that aren't already on the CV or given by the owner. Ask when unsure.
-- **Build the site and look at it before committing.** `npm run build` (`tools/build.cjs`) builds it into `build/site/` exactly as the Deploy workflow does: it copies the page and its assets, renders `Bogdan-Roatis-CV.pdf` and `assets/social-preview.png`, and fails if the PDF is longer than three A4 pages or the fonts (Google Sans, JetBrains Mono) didn't load. Open the PDF and check nothing is cut off. In a Claude Code cloud session Playwright is already installed; elsewhere, run `npm ci` and `npx playwright install chromium` first. `build/` is ignored, so nothing it makes is committed.
+- **Build the site and look at it before committing.** `npm run build` (`tools/build.cjs`) builds it into `build/site/` exactly as the Deploy workflow does: it copies the pages and their assets, checks that every file they link to is there, renders `Bogdan-Roatis-CV.pdf` and `assets/social-preview.png`, and fails if the PDF is longer than three A4 pages or the fonts (Google Sans, JetBrains Mono) didn't load. Open the PDF and check nothing is cut off. In a Claude Code cloud session Playwright is already installed; elsewhere, run `npm ci` and `npx playwright install chromium` first. `build/` is ignored, so nothing it makes is committed.
 - **The workflow builds every pull request too**, so one that makes the PDF longer than three pages fails its checks. Wait for the build to pass before merging.
-- **Keep the social preview in step with the page.** The card is `tools/social-card.html`, and it repeats the title under the name and the most recent roles. When those change on the page, change the card and its `og:image:alt` text in `index.html` to match. The build also writes `build/github-social-preview.png`, the same card at 1280×640 for the repository's own social preview on GitHub (**Settings → General → Social preview**). That one can only be uploaded by hand, so give it to the owner when the card changes.
-- **Bump the stylesheet version** (`resume.css?v=…` in `index.html`) whenever `assets/css/resume.css` changes, so visitors don't get a cached copy.
+- **Keep the social preview in step with the page.** The card is `tools/social-card.html`, and it repeats the title under the name and the most recent roles. When those change on the page, change the card and its `og:image:alt` text in `cv/index.html` and `index.html` to match. The build also writes `build/github-social-preview.png`, the same card at 1280×640 for the repository's own social preview on GitHub (**Settings → General → Social preview**). That one can only be uploaded by hand, so give it to the owner when the card changes.
+- **Bump the version in the link** whenever a stylesheet or script changes, so visitors don't get a cached copy: `resume.css?v=…` in both `index.html` and `cv/index.html`, `home.css?v=…` in `index.html`, and `theme.js?v=…` in both.
 - **Check the page** at phone, tablet and desktop widths, in light and dark, before committing.
 
+## Changing the home page
+
+- **The same facts as the CV.** Descriptions, roles and years on the home page come from the CV or from the owner. When a role or an app changes on the CV, change it here too.
+- **Projects** are shown like the image at the top of their README: the icon, the name and one line on the left, and a crop of the app's window coming in from the right. The crop is a WebP about 960 pixels wide in `assets/work/`.
+- **The STEM apps** each have a short loop: a silent H.264 MP4 of a few hundred KB, with a JPEG still frame from it as its poster. The page plays a loop only while it's on screen, and never with reduced motion, when the still shows instead. Make a loop from a video or GIF with ffmpeg, for example `ffmpeg -i in.mp4 -an -c:v libx264 -crf 25 -pix_fmt yuv420p -movflags +faststart out.mp4`, and set the card's `--media-bg` to the video's background colour so its edges don't show. Originals aren't committed.
+- **Other apps** are rows with their store icon, a 128-pixel PNG in `assets/work/icons/`. An app with no store listing gets a lettered tile instead.
+- **Links** to the projects use their full addresses, since they aren't files of this site; the build fails if any other link points to a file that isn't there.
+
 ## Design
+
+The CV's design is below. The home page uses the same colours, type, header and section labels, with dark cards for the work: their colours stay the same in both themes, because they carry the apps' own dark screens and videos.
 
 - **Minimal and editorial:** a cream page, near-black text and one ink-blue accent. Google Sans for everything: the name, headings (semibold for organisation and role names) and all running text, with dates in smaller grey type; JetBrains Mono only for section labels and the contact labels.
 - **Readable greys:** secondary text uses `--muted`, which keeps at least 7:1 contrast (WCAG AAA) in both themes and in print.

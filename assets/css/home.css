@@ -1,0 +1,231 @@
+/* ==========================================================================
+   Bogdan Roatis — home page
+   Builds on resume.css (colours, type, header, introduction and section
+   labels), so the home page and the CV read as one site. The work is shown
+   on dark cards: each project like the image at the top of its README, and
+   the two STEM apps with a short silent loop.
+   ========================================================================== */
+
+/* Colours of the dark cards: the same in both themes, since they carry the
+   apps' own dark screens and videos. */
+:root {
+  --card: #101318;
+  --card-ink: #f2f3f6;
+  --card-muted: #a9b0bd;
+  --card-edge: rgba(255, 255, 255, .08);
+  --card-link: #b7cdea;
+}
+
+.home .intro { padding-bottom: 3rem; }
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.6rem;
+}
+
+/* ---------- Projects: a small version of each README's top image ---------- */
+
+.project { display: grid; gap: .8rem; align-content: start; }
+
+/* Sized in the card's own width, so it scales like a picture: the icon and
+   name on the left, and the app's window coming in from the right. */
+.banner {
+  position: relative;
+  display: block;
+  aspect-ratio: 2 / 1;
+  overflow: hidden;
+  isolation: isolate;
+  container-type: inline-size;
+  border-radius: 14px;
+  background: var(--card);
+  color: var(--card-ink);
+  text-decoration: none;
+  box-shadow: 0 0 0 1px var(--card-edge), 0 18px 40px -28px rgba(0, 0, 0, .6);
+  transition: transform .25s ease, box-shadow .25s ease;
+}
+.banner::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: radial-gradient(60% 80% at 15% 50%, var(--glow), transparent 70%);
+}
+.banner.tributary { --glow: rgba(143, 107, 255, .2); }
+.banner.signature { --glow: rgba(255, 79, 154, .17); }
+.banner:hover { transform: translateY(-2px); box-shadow: 0 0 0 1px var(--card-edge), 0 24px 44px -26px rgba(0, 0, 0, .7); }
+.banner:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+
+.banner-id {
+  position: absolute;
+  left: 7cqw;
+  top: 50%;
+  width: 41cqw;
+  display: grid;
+  gap: 2.4cqw;
+  transform: translateY(-50%);
+}
+.banner-name {
+  display: flex;
+  align-items: center;
+  gap: 2.4cqw;
+  font-size: 7cqw;
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: -.03em;
+}
+.banner-line {
+  font-size: 2.9cqw;
+  line-height: 1.35;
+  color: var(--card-muted);
+}
+.app-mark {
+  display: inline-grid;
+  place-items: center;
+  width: 9cqw;
+  height: 9cqw;
+  flex: none;
+  overflow: hidden;
+  border-radius: 2.2cqw;
+  box-shadow: 0 0 0 1px var(--card-edge);
+}
+.app-mark svg { width: 100%; height: 100%; }
+.app-mark.light { background: #fff; }
+.app-mark.light svg { width: 66%; height: 66%; }
+.banner-window {
+  position: absolute;
+  left: 52cqw;
+  top: 12cqw;
+  width: 78cqw;
+  max-width: none;
+  height: auto;
+  border-radius: 1.6cqw 0 0 0;
+  box-shadow: 0 2cqw 6cqw rgba(0, 0, 0, .45), 0 0 0 1px var(--card-edge);
+}
+
+.project-meta {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: .5rem 1rem;
+  flex-wrap: wrap;
+  padding: 0 .15rem;
+}
+.project-links { display: inline-flex; gap: 1.3rem; }
+.project-links a, .showcase-link, .cv-links a, .app-name {
+  display: inline-flex;
+  align-items: baseline;
+  gap: .3rem;
+  text-decoration: none;
+}
+.project-links a { font-size: .92rem; font-weight: 500; }
+.project-links a:hover, .cv-links a:hover { text-decoration: underline; }
+.project-links .icon, .showcase-link .icon, .cv-links .icon, .app-name .icon {
+  width: .72em;
+  height: .72em;
+  align-self: center;
+}
+.when { font-size: .86rem; color: var(--muted); font-variant-numeric: tabular-nums; }
+
+/* ---------- Apps: the two STEM apps with a loop, then the rest ---------- */
+
+.showcase {
+  display: grid;
+  grid-template-rows: auto 1fr;
+  overflow: hidden;
+  border-radius: 14px;
+  background: var(--card);
+  color: var(--card-muted);
+  box-shadow: 0 0 0 1px var(--card-edge), 0 18px 40px -28px rgba(0, 0, 0, .6);
+}
+/* A square frame for each loop, whatever its shape. It sits on the video's own
+   background, so a tall video's sides don't show. */
+.showcase-media {
+  position: relative;
+  aspect-ratio: 1;
+  overflow: hidden;
+  background: var(--media-bg, #000);
+}
+.showcase-media video { position: absolute; inset: 0; display: block; width: 100%; height: 100%; object-fit: contain; }
+.showcase-text { display: grid; gap: .5rem; align-content: start; padding: 1.3rem 1.4rem 1.5rem; }
+.showcase-text h3 { font-size: 1.3rem; font-weight: 600; letter-spacing: -.01em; color: var(--card-ink); }
+.showcase-text p { font-size: .95rem; line-height: 1.55; }
+.showcase-text .showcase-meta { font-size: .86rem; color: #9ba3b1; }
+.showcase-link { justify-self: start; margin-top: .2rem; font-size: .92rem; font-weight: 500; color: var(--card-link); }
+.showcase-link:hover { text-decoration: underline; }
+
+.app-list { margin-top: 2.4rem; }
+.app-list li {
+  display: grid;
+  grid-template-columns: 3.4rem 13rem minmax(0, 1fr) auto;
+  align-items: center;
+  column-gap: 1.2rem;
+  padding: .8rem 0;
+}
+.app-list li + li { border-top: 1px solid var(--line); }
+/* One shape for the store icons and the lettered tiles of apps with no listing. */
+.app-icon { display: inline-flex; }
+.app-icon img, .app-icon.tile {
+  width: 2.2rem;
+  height: 2.2rem;
+  border-radius: 23%;
+  box-shadow: 0 0 0 1px var(--line);
+}
+.app-icon.tile {
+  display: inline-grid;
+  place-items: center;
+  background: var(--accent-soft);
+  font-size: .78rem;
+  font-weight: 600;
+  letter-spacing: -.01em;
+  color: var(--ink-2);
+}
+.app-icon.pair img + img { margin-left: -1.1rem; box-shadow: 0 0 0 2px var(--paper); }
+.app-name { font-weight: 600; color: var(--ink); white-space: nowrap; }
+a.app-name:hover { color: var(--accent); }
+.app-name .icon { color: var(--muted); }
+.app-what { min-width: 0; font-size: .95rem; color: var(--muted); }
+.app-when { font-size: .86rem; color: var(--muted); font-variant-numeric: tabular-nums; white-space: nowrap; }
+
+/* ---------- CV and footer ---------- */
+
+.cv-line { display: flex; flex-wrap: wrap; align-items: baseline; gap: .6rem 1.6rem; }
+.cv-line .section-label { margin: 0; }
+.cv-line p { color: var(--muted); }
+.cv-links { display: inline-flex; gap: 1.3rem; }
+.cv-links a { font-weight: 500; }
+
+.home-footer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: .5rem 1.5rem;
+  margin-top: 4rem;
+  padding-top: 1.4rem;
+  padding-bottom: 2.6rem;
+  font-size: .86rem;
+  color: var(--muted);
+  border-top: 1px solid var(--line);
+}
+.home-footer a { color: var(--muted); text-decoration: none; }
+.home-footer a:hover { color: var(--accent); }
+
+/* ---------- Narrower screens ---------- */
+
+@media screen and (max-width: 52rem) {
+  .app-list li { grid-template-columns: 3.4rem minmax(0, 1fr) auto; row-gap: .15rem; }
+  .app-list .app-icon { grid-row: 1 / span 2; }
+  .app-list .app-name { grid-column: 2; grid-row: 1; white-space: normal; }
+  .app-list .app-when { grid-column: 3; grid-row: 1; }
+  .app-list .app-what { grid-column: 2 / -1; grid-row: 2; }
+}
+
+@media screen and (max-width: 44rem) {
+  .cards { grid-template-columns: minmax(0, 1fr); gap: 2.2rem; }
+  .app-list { margin-top: 2rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .banner { transition: none; }
+  .banner:hover { transform: none; }
+}
