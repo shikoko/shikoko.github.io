@@ -2,7 +2,10 @@
 <!-- Social preview card for the home page: the source of assets/home-preview.png
      on the site, rendered at 1200x630 by tools/build.cjs for the home page's
      og:image. The CV keeps its own card, tools/social-card.html.
-     Keep the work it shows in step with index.html. -->
+     The left side matches the CV's card; keep the name and title in step with it.
+     The right side is an abstract arrangement of shapes in the five accent
+     colours of the projects: a rounded square like an app icon, a disc, a half
+     circle, a pill and a squiggle like Signature's mark. -->
 <html lang="en-GB">
 <head>
 <meta charset="UTF-8">
@@ -12,10 +15,7 @@
   * { box-sizing: border-box; margin: 0; padding: 0; }
   html, body { width: 100vw; height: 100vh; overflow: hidden; }
   body {
-    display: grid;
-    grid-template-columns: 1fr 540px;
-    gap: 56px;
-    padding: 84px 72px 76px 88px;
+    position: relative;
     background: #f8f6f0;
     color: #3b3a36;
     font-family: "Google Sans", sans-serif;
@@ -24,57 +24,31 @@
   .mono { font-family: "JetBrains Mono", monospace; }
 
   /* The same left side as the CV's card */
-  .left { display: flex; flex-direction: column; min-width: 0; }
-  .left::before { content: ""; width: 52px; height: 4px; margin-bottom: 34px; background: #2b4a6f; }
+  .text { position: absolute; z-index: 1; left: 88px; top: 84px; bottom: 76px; display: flex; flex-direction: column; }
+  .text::before { content: ""; width: 52px; height: 4px; margin-bottom: 34px; background: #2b4a6f; }
   .name { font-size: 96px; font-weight: 500; line-height: 1; letter-spacing: -.035em; color: #1d1d1b; }
   .title { margin-top: 18px; font-size: 38px; letter-spacing: -.01em; color: #2b4a6f; }
   .platforms { margin-top: 14px; font-size: 24px; color: #69655c; }
   .site { margin-top: auto; font-size: 19px; letter-spacing: .06em; color: #69655c; }
 
-  /* The work: the two STEM apps on black, then the two personal projects */
-  .work { display: grid; grid-template-rows: auto auto; gap: 16px; align-content: center; }
-  .stem { position: relative; display: grid; grid-template-columns: 1fr 1fr; height: 318px; overflow: hidden; border-radius: 18px; background: #000; }
-  /* Each app: its picture fading into the black, and its name in a strip under it */
-  .stem .shot { display: grid; grid-template-rows: minmax(0, 1fr) auto; min-height: 0; }
-  .stem .pic { position: relative; overflow: hidden; }
-  .stem .pic img { position: absolute; left: 50%; transform: translateX(-50%); }
-  .stem .player img { top: 0; height: 100%;
-    -webkit-mask-image: linear-gradient(to right, transparent, #000 12%, #000 88%, transparent), linear-gradient(to bottom, #000 70%, transparent);
-    -webkit-mask-composite: source-in; }
-  .stem .projector img { top: -18px; height: 125%;
-    -webkit-mask-image: radial-gradient(closest-side, #000 52%, transparent); }
-  .stem .tag { padding: 2px 22px 18px; font-size: 21px; font-weight: 600; line-height: 1.15; color: #f2f3f6; letter-spacing: -.01em; }
-  .stem .tag span { display: block; margin-top: 3px; font-size: 15px; font-weight: 400; color: #a9b0bd; }
-
-  .projects { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-  .banner { position: relative; aspect-ratio: 2 / 1; overflow: hidden; container-type: inline-size; border-radius: 12px; background: #101318; color: #f2f3f6; isolation: isolate; }
-  .banner::before { content: ""; position: absolute; inset: 0; z-index: -1; background: radial-gradient(60% 80% at 15% 50%, var(--glow), transparent 70%); }
-  .banner.tributary { --glow: rgba(143, 107, 255, .2); }
-  .banner.signature { --glow: rgba(255, 79, 154, .17); }
-  .banner-id { position: absolute; left: 7cqw; top: 50%; transform: translateY(-50%); display: flex; align-items: center; gap: 2.6cqw; font-size: 7cqw; font-weight: 600; letter-spacing: -.03em; }
-  .app-mark { display: inline-grid; place-items: center; width: 9.5cqw; height: 9.5cqw; flex: none; overflow: hidden; border-radius: 2.3cqw; }
-  .app-mark svg { width: 100%; height: 100%; }
-  .app-mark.light { background: #fff; }
-  .app-mark.light svg { width: 66%; height: 66%; }
-  .window { position: absolute; left: 58cqw; top: 14cqw; width: 78cqw; border-radius: 1.6cqw 0 0 0; box-shadow: 0 2cqw 6cqw rgba(0, 0, 0, .45); }
+  /* The shapes, drawn on a 1200x630 canvas to the right of the words */
+  .shapes { position: absolute; inset: 0; width: 100%; height: 100%; }
 </style>
 </head>
 <body>
-  <div class="left">
+  <div class="text">
     <h1 class="name">Bogdan<br>Roatis</h1>
     <p class="title">Senior Mobile Engineer</p>
     <p class="platforms">Android &amp; iOS · London, UK</p>
     <p class="site mono">shikoko.github.io</p>
   </div>
-  <div class="work">
-    <div class="stem">
-      <div class="shot player"><div class="pic"><img src="../assets/work/stem-player.jpg" alt=""></div><p class="tag">stem player<span>iOS · STEM</span></p></div>
-      <div class="shot projector"><div class="pic"><img src="../assets/work/stem-projector.jpg" alt=""></div><p class="tag">stem projector<span>Android · STEM</span></p></div>
-    </div>
-    <div class="projects">
-      <div class="banner tributary"><span class="banner-id"><span class="app-mark light"><svg viewBox="102 130 820 820" aria-hidden="true"><defs><linearGradient id="trib-branch" gradientUnits="userSpaceOnUse" x1="0" y1="890" x2="0" y2="330"><stop offset="0" stop-color="#ff4f9a"/><stop offset="1" stop-color="#8f6bff"/></linearGradient><mask id="trib-holes" maskUnits="userSpaceOnUse" x="0" y="0" width="1024" height="1024"><rect width="1024" height="1024" fill="#fff"/><circle cx="380" cy="330" r="40"/><circle cx="380" cy="760" r="30"/></mask></defs><g mask="url(#trib-holes)"><g fill="none" stroke-width="96" stroke-linecap="round"><path d="M700 890V700C700 520 380 520 380 330" stroke="url(#trib-branch)"/><path d="M380 190V890" stroke="#141a26"/></g><circle cx="380" cy="330" r="104" fill="#141a26"/><circle cx="380" cy="760" r="76" fill="#141a26"/></g></svg></span>Tributary</span><img class="window" src="../assets/work/tributary.webp" alt=""></div>
-      <div class="banner signature"><span class="banner-id"><span class="app-mark"><svg viewBox="0 0 32 32" aria-hidden="true"><defs><linearGradient id="sig-line" x1="0" x2="1"><stop offset="0" stop-color="#ff4f9a"/><stop offset="1" stop-color="#8f6bff"/></linearGradient></defs><rect width="32" height="32" rx="9" fill="#1d212a"/><path d="M7 19.5c2.2-.6 3.8-7.5 6.1-7.5 2 0-.9 8 1.2 8 1.6 0 2.6-4.4 4.2-4.4 1.4 0-.6 4.4 1 4.4 1.2 0 2.2-1.6 4.5-1.6" fill="none" stroke="url(#sig-line)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/><path d="M7 24.5h18" stroke="#e6e9ef" stroke-opacity=".5" stroke-width="1.6" stroke-linecap="round"/></svg></span>Signature</span><img class="window" src="../assets/work/signature.webp" alt=""></div>
-    </div>
-  </div>
+  <svg class="shapes" viewBox="0 0 1200 630" preserveAspectRatio="xMaxYMid meet" aria-hidden="true">
+    <rect x="770" y="70" width="230" height="230" rx="54" fill="#1597d6"/>
+    <circle cx="1010" cy="380" r="140" fill="#ec3f8a" style="mix-blend-mode: multiply"/>
+    <path d="M 640 520 A 120 120 0 0 1 880 520 Z" fill="#eb9a10"/>
+    <rect x="860" y="250" width="250" height="78" rx="39" fill="#1fb877" transform="rotate(-24 985 289)" style="mix-blend-mode: multiply"/>
+    <path d="M 640 210 c 30 -60 60 60 90 0 s 60 60 90 0 s 60 60 90 0" fill="none" stroke="#7b57f0" stroke-width="18" stroke-linecap="round"/>
+    <circle cx="1120" cy="110" r="26" fill="#1d1d1b"/>
+  </svg>
 </body>
 </html>
