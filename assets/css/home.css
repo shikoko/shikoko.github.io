@@ -41,7 +41,7 @@
   background: var(--card);
   color: var(--card-ink);
   text-decoration: none;
-  box-shadow: 0 0 0 1px var(--card-edge), 0 18px 40px -28px rgba(0, 0, 0, .6);
+  box-shadow: 0 18px 40px -28px rgba(0, 0, 0, .6);
   transition: transform .25s ease, box-shadow .25s ease;
 }
 .banner::before {
@@ -53,7 +53,7 @@
 }
 .banner.tributary { --glow: rgba(143, 107, 255, .2); }
 .banner.signature { --glow: rgba(255, 79, 154, .17); }
-.banner:hover { transform: translateY(-2px); box-shadow: 0 0 0 1px var(--card-edge), 0 24px 44px -26px rgba(0, 0, 0, .7); }
+.banner:hover { transform: translateY(-2px); box-shadow: 0 24px 44px -26px rgba(0, 0, 0, .7); }
 .banner:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
 
 .banner-id {
