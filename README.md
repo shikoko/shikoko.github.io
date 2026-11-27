@@ -11,10 +11,10 @@ Two hand-written pages, with no framework or site generator:
 
 Both pages share the theme button, [`assets/js/theme.js`](assets/js/theme.js), and the choice it saves.
 
-`npm run build` ([`tools/build.cjs`](tools/build.cjs)) builds the site into `build/site/`. It copies the pages, checks that every file they link to is there, and renders two files from the CV with Chromium, through Playwright:
+`npm run build` ([`tools/build.cjs`](tools/build.cjs)) builds the site into `build/site/`. It copies the pages, checks that every file they link to is there, and renders these files with Chromium, through Playwright:
 
 - `Bogdan-Roatis-CV.pdf`, the copy the **CV** download button saves. The build fails if it's longer than three A4 pages.
-- `assets/social-preview.png`, the picture shown when the link is shared, from [`tools/social-card.html`](tools/social-card.html).
+- `assets/social-preview.png` and `assets/home-preview.png`, the pictures shown when the CV or the home page is shared, from [`tools/social-card.html`](tools/social-card.html) and [`tools/home-card.html`](tools/home-card.html).
 
 The [Deploy workflow](.github/workflows/deploy.yml) runs the build for every pull request into `main`, and publishes every push to `main` with GitHub Pages.
 

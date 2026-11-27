@@ -1,6 +1,7 @@
 // Builds the site into build/site, as the Deploy workflow publishes it: the
 // home page, the CV in cv/, their assets, the PDF the Download PDF button
-// saves, and the social preview image, the last two rendered with Chromium.
+// saves, and the two pages' social preview images, the last three rendered
+// with Chromium.
 // Also renders the 1280x640 copy of the card for the repository's social
 // preview on GitHub into build/, outside the site. It stops if a page links
 // to a file of the site that isn't there.
@@ -62,11 +63,12 @@ async function main() {
     pdfPagesBuilt = pages;
 
     const cards = [
-      { width: 1200, height: 630, file: path.join(site, "assets", "social-preview.png") },
-      { width: 1280, height: 640, file: path.join(out, "github-social-preview.png") },
+      { source: "tools/social-card.html", width: 1200, height: 630, file: path.join(site, "assets", "social-preview.png") },
+      { source: "tools/social-card.html", width: 1280, height: 640, file: path.join(out, "github-social-preview.png") },
+      { source: "tools/home-card.html", width: 1200, height: 630, file: path.join(site, "assets", "home-preview.png") },
     ];
-    for (const { width, height, file } of cards) {
-      const card = await open(browser, "tools/social-card.html", { width, height });
+    for (const { source, width, height, file } of cards) {
+      const card = await open(browser, source, { width, height });
       await card.screenshot({ path: file });
       await card.close();
     }
@@ -76,7 +78,7 @@ async function main() {
 
   checkLinks(["index.html", "cv/index.html"]);
 
-  for (const file of ["site/index.html", "site/cv/index.html", "site/Bogdan-Roatis-CV.pdf", "site/assets/social-preview.png", "github-social-preview.png"]) {
+  for (const file of ["site/index.html", "site/cv/index.html", "site/Bogdan-Roatis-CV.pdf", "site/assets/social-preview.png", "site/assets/home-preview.png", "github-social-preview.png"]) {
     const size = fs.statSync(path.join(out, file)).size;
     console.log(`build/${file}  ${Math.ceil(size / 1024)} KB`);
   }
