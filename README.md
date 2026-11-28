@@ -6,7 +6,7 @@ Bogdan Roatis's site, published at **https://shikoko.github.io/**: his projects 
 
 Two hand-written pages, with no framework or site generator:
 
-- **The home page**, [`index.html`](index.html) with [`assets/css/home.css`](assets/css/home.css) on top of the CV's stylesheet. It shows the projects (Tributary and Signature, each published from its own repository) as small versions of their README images, the two STEM apps with short silent loops on one black band, and the other apps with their store icons. Its pictures, loops and icons are in [`assets/work/`](assets/work/).
+- **The home page**, [`index.html`](index.html) with [`assets/css/home.css`](assets/css/home.css) on top of the CV's stylesheet. It opens with his photo beside the introduction, then shows the projects (Tributary and Signature, each published from its own repository) as small versions of their README images, the two STEM apps with short silent loops on one black band, and the other apps with their store icons. Its pictures, loops and icons are in [`assets/work/`](assets/work/).
 - **The CV**, [`cv/index.html`](cv/index.html) with [`assets/css/resume.css`](assets/css/resume.css): a scrolling, editorial layout with light and dark themes on screen, and an A4 print stylesheet for the PDF.
 
 Both pages share the theme button, [`assets/js/theme.js`](assets/js/theme.js), and the choice it saves.
