@@ -18,6 +18,27 @@
 
 .home .intro { padding-bottom: 3rem; }
 
+/* The portrait sits beside the introduction, level with the name, title and
+   summary. On phones there's no room beside them, so it goes above the name
+   in place of the short blue line. It's on the home page only, not the CV. */
+.home .intro {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  column-gap: clamp(2.5rem, 5vw, 4rem);
+  align-items: start;
+}
+.home .intro > *, .home .intro::before { grid-column: 1; }
+.home .intro > .portrait {
+  grid-column: 2;
+  grid-row: 1 / span 5;
+  align-self: center;
+  display: block;
+  width: clamp(11rem, 21vw, 17rem);
+  height: auto;
+  aspect-ratio: 1;
+  border-radius: 50%;
+}
+
 .cards {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -236,6 +257,9 @@ a.app-name:hover { color: var(--accent); }
 }
 
 @media screen and (max-width: 44rem) {
+  .home .intro { grid-template-columns: minmax(0, 1fr); }
+  .home .intro::before { display: none; }
+  .home .intro > .portrait { grid-column: 1; grid-row: auto; order: -1; align-self: start; width: 6.5rem; margin-bottom: 1.6rem; }
   .cards { grid-template-columns: minmax(0, 1fr); gap: 2.2rem; }
   .stem-band { padding: 1.25rem 1rem 1.5rem; }
   .stem-apps { grid-template-columns: minmax(0, 1fr); gap: 2rem; }
